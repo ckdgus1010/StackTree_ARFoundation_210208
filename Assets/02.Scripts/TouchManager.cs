@@ -16,13 +16,13 @@ public class TouchManager : MonoBehaviour
     public GameObject pointer;
     public CubeCtrl cubeCtrl;
 
-    [Header("Game Board Information")]
+    [Header("Game Board Info")]
     public GameObject gameBoardPrefab;
     public float boardSize = 0.1f;
     public GameObject checkboardPrefab;
     private Vector3 originScale;
 
-    [Header("Alone Mode Quest Data")]
+    [Header("Quest Data - Alone Mode")]
     public AloneModeQuestCtrl aloneModeQuestCtrl;
     public GameObject playSceneCanvas;
 

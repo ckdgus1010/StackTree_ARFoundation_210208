@@ -50,6 +50,11 @@ public class PointerCtrl : MonoBehaviour
         }
         else
         {
+            if (GameManager.Instance.modeType == ModeType.Alone_Count)
+            {
+                return;
+            }
+
             Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
             if (Physics.Raycast(ray, out RaycastHit hitInfo, rayDistance, LayerMask.GetMask("Props")))
             {
