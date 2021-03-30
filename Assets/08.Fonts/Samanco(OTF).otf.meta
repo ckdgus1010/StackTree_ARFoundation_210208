@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: fff6769f315bde64a92f1a50b6b5b31a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Binggrae Samanco
+  fontNames:
+  - Binggrae Samanco
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 53945e56cdb8a164293291a2c8dfe91a, type: 3}
+  - {fileID: 12800000, guid: 4f7a035b68c3e7a47b31debb050399d1, type: 3}
+  - {fileID: 12800000, guid: d9a33fed9c21b7444ae9d310d344e850, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
