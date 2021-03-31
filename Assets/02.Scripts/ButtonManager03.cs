@@ -125,17 +125,15 @@ public class ButtonManager03 : MonoBehaviour
     {
         SoundManager.Instance.ClickButton();
 
+        
+
         touchManager.ResetTouchData();
         cubeCtrl.ResetCubeData();
-
-        Debug.Log("ButtonManager03 ::: 보드 삭제");
     }
 
     // 정답 확인
     public void CheckAnswer()
     {
-        Debug.Log("ButtonManager03 ::: 정답 확인 시작");
-
         SoundManager.Instance.ClickButton();
 
         // 혼자하기 유형01 - 큐브 개수 맞추기
@@ -168,6 +166,8 @@ public class ButtonManager03 : MonoBehaviour
     // 정답 확인 후 [다시하기 버튼] 클릭
     public void ClickRetryGameButton()
     {
+        SoundManager.Instance.ClickButton();
+
         answerManager.ResetOXPanel();
         ResetGameBoard();
         Debug.Log("ButtonManager03 ::: 다시하기 버튼 클릭");
@@ -176,6 +176,8 @@ public class ButtonManager03 : MonoBehaviour
     // 정답 확인 후 [이어하기 버튼] 클릭
     public void ClickContinueGameButton()
     {
+        SoundManager.Instance.ClickButton();
+
         answerManager.ResetOXPanel();
         Debug.Log("ButtonManager03 ::: 이어하기 버튼 클릭");
     }
@@ -183,6 +185,8 @@ public class ButtonManager03 : MonoBehaviour
     // 정답 확인 후 [다음 단계로 버튼] 클릭
     public void ClickNextLevelButton()
     {
+        SoundManager.Instance.ClickButton();
+
         answerManager.ResetOXPanel();
         answerManager.ClickNextLevelButton(playSceneCanvas);
         Debug.Log("ButtonManager03 ::: 다음 단계로 버튼 클릭");
@@ -198,16 +202,12 @@ public class ButtonManager03 : MonoBehaviour
     // [스크린샷 버튼] 클릭
     public void ClickScreenshotButton()
     {
-        Debug.Log($"ButtonManager03 ::: 스크린샷 버튼 클릭");
-
         screenshotCtrl.Capture_Button();
     }
 
     // [설정 버튼] 클릭
     public void ClickSettingButton()
     {
-        Debug.Log("ButtonManager03 ::: 설정 버튼 클릭");
-
         SoundManager.Instance.ClickButton();
         settingPanel.SetActive(!settingPanel.activeSelf);
         settingCtrl.SetSoundData(settingPanel.activeSelf);
@@ -216,8 +216,6 @@ public class ButtonManager03 : MonoBehaviour
     // [재도전 버튼] 클릭
     public void ClickGameRetryButton()
     {
-        Debug.Log("ButtonManager03 ::: [재도전 버튼] 클릭");
-
         SoundManager.Instance.ClickButton();
         ResetGameBoard();
         ClickSettingButton();
@@ -226,8 +224,6 @@ public class ButtonManager03 : MonoBehaviour
     // [나가기 버튼] 클릭
     public void ClickGameExitButton()
     {
-        Debug.Log("ButtonManager03 ::: [나가기 버튼] 클릭");
-
         SoundManager.Instance.ClickButton();
         SceneManager.LoadScene("01. Main Scene");
     }

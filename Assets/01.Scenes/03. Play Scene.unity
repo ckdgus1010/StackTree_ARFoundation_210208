@@ -1114,12 +1114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0639ef9c45c83438c4d693f3c19811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonManager: {fileID: 1848570478}
-  panelPrefab: {fileID: 266343317297457610, guid: ede2773383795d949b35c15d9f4ca62d,
-    type: 3}
-  worldCanvas: {fileID: 405014981}
-  spriteO: {fileID: 21300000, guid: 7ea9f4681f481c34d96ca5785604d3e7, type: 3}
-  spriteX: {fileID: 21300000, guid: c4ea334868102944080846a5c4e7b6ab, type: 3}
+  buttonManager: {fileID: 0}
+  panelPrefab: {fileID: 0}
+  worldCanvas: {fileID: 0}
+  spriteO: {fileID: 0}
+  spriteX: {fileID: 0}
   aloneModeQuestCtrl: {fileID: 0}
 --- !u!1 &594503495
 GameObject:
@@ -1338,9 +1337,6 @@ MonoBehaviour:
   questControllerPrefab: {fileID: 4393679682125136149, guid: e2e668d37c350984a987743a6724bc79,
     type: 3}
   playSceneCanvas: {fileID: 2143372474}
-  worldCanvas: {fileID: 405014981}
-  canvasHeight: 1
-  canvasDepth: 0
   guideCubePrefab: {fileID: 46843960625801040, guid: ea5cebc9aa63e1f4ab0b580b26e2e56a,
     type: 3}
   currGameboard: {fileID: 0}
@@ -4186,7 +4182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchManager: {fileID: 601603640}
   pointerCtrl: {fileID: 601603641}
-  answerManager: {fileID: 564380692}
+  answerManager: {fileID: 0}
   gameboardCtrl: {fileID: 0}
   gamePanelCtrl: {fileID: 735680091}
   gamePanel_Create: {fileID: 8186445132670978719, guid: b2022e926ea9e8d4abade0281d7cc815,

@@ -28,16 +28,9 @@ public class AnswerManager : MonoBehaviour
         if (string.IsNullOrEmpty(inputField.text) == false)
         {
             int stageID = GameManager.Instance.stageID - 1;
-            string top = QuestManager.Instance.currQuest[stageID].GetTopInfo();
-            int total = 0;
+            int totalCount = aloneModeQuestCtrl.totalCount;
 
-            for (int i = 0; i < top.Length; i++)
-            {
-                int num = int.Parse(top.Substring(i, 1));
-                total += num;
-            }
-
-            if (inputField.text == total.ToString())
+            if (inputField.text == totalCount.ToString())
             {
                 Debug.Log("AnswerManager ::: 정답입니다.");
                 isCorrect = true;
@@ -59,12 +52,11 @@ public class AnswerManager : MonoBehaviour
             }
 
             SetOXPanel(isCorrect);
-            Debug.Log($"AnswerManager ::: total // txt = {total} // {inputField.text}");
         }
     }
 
     void SetOXPanel(bool _isCorrect)
-    {2
+    {
         if (oxPanel == null)
         {
             oxPanel = Instantiate(panelPrefab, worldCanvas.transform);

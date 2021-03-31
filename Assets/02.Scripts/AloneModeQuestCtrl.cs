@@ -18,6 +18,8 @@ public class AloneModeQuestCtrl : MonoBehaviour
     private GameObject currGrid;
     private List<GameObject> list = new List<GameObject>();
 
+    public int totalCount = 0;
+
     public void SetCurrGameboard(GameObject currGameboard)
     {
         if (gameboard == null)
@@ -39,6 +41,7 @@ public class AloneModeQuestCtrl : MonoBehaviour
             list.Clear();
         }
 
+        totalCount = 0;
         ModeType modeType = GameManager.Instance.modeType;
 
         // 혼자하기 모드 - 유형 01
@@ -65,6 +68,7 @@ public class AloneModeQuestCtrl : MonoBehaviour
             {
                 int cubeCount = int.Parse(top.Substring(i, 1));
                 GameObject gridCell = currGrid.transform.GetChild(i).gameObject;
+                totalCount += cubeCount;
 
                 if (cubeCount != 0)
                 {
