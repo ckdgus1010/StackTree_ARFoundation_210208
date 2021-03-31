@@ -15,6 +15,7 @@ public class AnswerManager : MonoBehaviour
     private GameObject oxPanel;
     private Image panelImage;
     private bool isCorrect;
+    private Text titleText;
     private Button nextLevelButton;
     private Button exitGameButton;
 
@@ -40,6 +41,15 @@ public class AnswerManager : MonoBehaviour
             {
                 Debug.Log("AnswerManager ::: 정답입니다.");
                 isCorrect = true;
+
+                GameManager.Instance.currStageStateArray[stageID] = AloneModeStageState.Cleared;
+
+                if (stageID != GameManager.Instance.currStageStateArray.Length - 1)
+                {
+                    GameManager.Instance.currStageStateArray[stageID + 1] = AloneModeStageState.Current;
+                    Debug.Log("AnswerManager ::: 축하합니다. 모든 스테이지를 클리어했습니다.");
+                }
+
                 inputField.text = "";
             }
             else
@@ -54,10 +64,12 @@ public class AnswerManager : MonoBehaviour
     }
 
     void SetOXPanel(bool _isCorrect)
-    {
+    {2
         if (oxPanel == null)
         {
             oxPanel = Instantiate(panelPrefab, worldCanvas.transform);
+
+            titleText = oxPanel.transform.GetChild(0).GetComponent<Text>();
             panelImage = oxPanel.transform.GetChild(1).GetComponent<Image>();
 
             Button retryButton = oxPanel.transform.GetChild(2).GetComponent<Button>();
@@ -81,11 +93,13 @@ public class AnswerManager : MonoBehaviour
         
         if (_isCorrect == true)
         {
+            titleText.text = "정답입니다 :D";
             nextLevelButton.transform.gameObject.SetActive(true);
             exitGameButton.transform.gameObject.SetActive(false);
         }
         else
         {
+            titleText.text = "틀렸습니다!!";
             exitGameButton.transform.gameObject.SetActive(true);
             nextLevelButton.transform.gameObject.SetActive(false);
         }

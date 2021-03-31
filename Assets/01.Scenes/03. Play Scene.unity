@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 405014983}
   - component: {fileID: 405014982}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: World Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -872,7 +872,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405014981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1338,6 +1338,9 @@ MonoBehaviour:
   questControllerPrefab: {fileID: 4393679682125136149, guid: e2e668d37c350984a987743a6724bc79,
     type: 3}
   playSceneCanvas: {fileID: 2143372474}
+  worldCanvas: {fileID: 405014981}
+  canvasHeight: 1
+  canvasDepth: 0
   guideCubePrefab: {fileID: 46843960625801040, guid: ea5cebc9aa63e1f4ab0b580b26e2e56a,
     type: 3}
   currGameboard: {fileID: 0}

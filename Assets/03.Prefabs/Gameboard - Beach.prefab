@@ -82,6 +82,7 @@ MonoBehaviour:
   - {fileID: 6952960146026481963}
   - {fileID: 6952960146940498851}
   - {fileID: 6952960146384583205}
+  cubePrefab: {fileID: 0}
 --- !u!1001 &3995001121440652738
 PrefabInstance:
   m_ObjectHideFlags: 0

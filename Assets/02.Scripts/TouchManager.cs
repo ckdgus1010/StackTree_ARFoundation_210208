@@ -80,7 +80,7 @@ public class TouchManager : MonoBehaviour
         // Game Board가 없는 경우
         if (currGameboard == null)
         {
-            var rot = Quaternion.LookRotation(cam.transform.position - hits[0].pose.position);
+            var rot = Quaternion.LookRotation(hits[0].pose.position - cam.transform.position);
             // 게임 보드 생성
             currGameboard = Instantiate(gameBoardPrefab);
             currGameboard.transform.position = hits[0].pose.position;
@@ -88,9 +88,8 @@ public class TouchManager : MonoBehaviour
                                                                , rot.eulerAngles.y
                                                                , cam.transform.position.z);
 
-            originScale = currGameboard.transform.localScale;
-
             // 게임 보드 크기 조절
+            originScale = currGameboard.transform.localScale;
             currGameboard.transform.localScale *= boardSize;
 
             // CubeCtrl에 Gameboard 데이터 세팅
@@ -123,7 +122,6 @@ public class TouchManager : MonoBehaviour
             guideCube.transform.localScale = gameboardCtrl.GetCubeScale();
             guideCube.SetActive(false);
             pointerCtrl.guideCube = guideCube;
-
         }
         // Game Board가 있는 경우
         else
