@@ -23,18 +23,15 @@ public class CanvasManager : MonoBehaviour
                 break;
             case ModeType.Create:
                 canvasArray[(int)CanvasName.Main].SetActive(true);
-                swipeMenu.value = 0.0f;
                 break;
             case ModeType.Alone_Count:
             case ModeType.Alone_Minus:
             case ModeType.Alone_Plus:
                 canvasArray[(int)CanvasName.Main].SetActive(true);
-                swipeMenu.value = 0.5f;
                 break;
             case ModeType.Together_Two:
             case ModeType.Together_Three:
                 canvasArray[(int)CanvasName.Main].SetActive(true);
-                swipeMenu.value = 1.0f;
                 break;
         }
 

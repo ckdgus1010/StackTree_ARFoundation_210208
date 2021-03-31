@@ -5,24 +5,63 @@ using UnityEngine.UI;
 
 public class SwipeMenu : MonoBehaviour
 {
+    private RectTransform rectTr;
+    private HorizontalLayoutGroup horizontalLayoutGroup;
+
+    [Header("Swipe Control")]
     public Scrollbar horizontalScrollbar;
     public float lerpSpeed = 0.1f;
     public float sensitivity = 150.0f;
+    private float[] points;
+    private int currPointNum = 0;
 
-    public float value;
-    private float intialValue;
     private Vector2 startPos;
     private Vector2 endPos;
 
     [SerializeField]
     private Toggle[] paginations = new Toggle[3];
 
+    void Start()
+    {
+        rectTr = GetComponent<RectTransform>();
+        horizontalLayoutGroup = GetComponent<HorizontalLayoutGroup>();
+
+        SetPointsData();
+
+        // 기본 위치 세팅
+        currPointNum = 0;
+        rectTr.anchoredPosition = new Vector2(points[currPointNum], 0);
+    }
+
+    // 이동할 수 있는 위치 설정
+    void SetPointsData()
+    {
+        int childCount = transform.childCount;
+        points = new float[childCount];
+
+        float panelSize = transform.GetChild(0).GetComponent<RectTransform>().sizeDelta.x;
+        float leftPadding = horizontalLayoutGroup.padding.left;
+        float spacePadding = horizontalLayoutGroup.spacing;
+
+        for (int i = 0; i < childCount; i++)
+        {
+            if (i == 0)
+            {
+                points[i] = panelSize + leftPadding;
+            }
+            else
+            {
+                float num = panelSize + spacePadding;
+                points[i] = points[i - 1] - num;
+            }
+        }
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             startPos = Input.mousePosition;
-            intialValue = horizontalScrollbar.value;
         }
 
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
@@ -36,7 +75,6 @@ public class SwipeMenu : MonoBehaviour
 
             // 방향 확인
             Vector2 dir = endPos - startPos;
-            //Debug.Log($"dir.x ::: {dir.x} // scrollbar.value = {horizontalScrollbar.value} \n startPos: {startPos} // endPos: {endPos}");
 
             // startPos & endPos 초기화
             startPos = Vector2.zero;
@@ -48,49 +86,38 @@ public class SwipeMenu : MonoBehaviour
                 return;
             }
 
+            // 왼쪽으로 이동
             if (dir.x > sensitivity)
             {
-                //Debug.Log("왼쪽으로 이동");
-
-                if (intialValue < 0.75f)
+                if (currPointNum != 0)
                 {
-                    value = 0.0f;
-                    paginations[0].isOn = true;
-                }
-                else if (intialValue > 0.75f)
-                {
-                    value = 0.5f;
-                    paginations[1].isOn = true;
+                    currPointNum -= 1;
+                    paginations[currPointNum].isOn = true;
                 }
             }
+            // 오른쪽으로 이동
             else if (dir.x < -sensitivity)
             {
-                //Debug.Log("오른쪽으로 이동");
-
-                if (intialValue < 0.25f)
+                if (currPointNum != points.Length - 1)
                 {
-                    value = 0.5f;
-                    paginations[1].isOn = true;
-                }
-                else if (intialValue > 0.25f)
-                {
-                    value = 1.0f;
-                    paginations[2].isOn = true;
+                    currPointNum += 1;
+                    paginations[currPointNum].isOn = true;
                 }
             }
             else
             {
-                //Debug.Log($"SwipeMenu ::: {dir.x} 단순 터치");
                 return;
             }
         }
 
-        horizontalScrollbar.value = Mathf.Lerp(horizontalScrollbar.value, value, lerpSpeed * Time.deltaTime);
+        Vector2 destination = new Vector2(points[currPointNum], 0);
+        rectTr.anchoredPosition = Vector2.Lerp(rectTr.anchoredPosition, destination, lerpSpeed * Time.deltaTime);
     }
 
     public void ClickAloneModeButton()
     {
-        value = 0.5f;
-        paginations[1].isOn = true;
+        currPointNum = 1;
+        rectTr.anchoredPosition = new Vector2(points[currPointNum], 0);
+        paginations[currPointNum].isOn = true;
     }
 }
