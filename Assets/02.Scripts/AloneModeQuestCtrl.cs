@@ -25,7 +25,6 @@ public class AloneModeQuestCtrl : MonoBehaviour
             gameboard = currGameboard;
             cubeList = gameboard.transform.GetChild(2).gameObject;
             gridGroup = gameboard.GetComponent<GameboardCtrl>().gridGroup;
-            Debug.Log($"AloneModeQuestCtrl ::: gridGroup.Length = {gridGroup.Length}");
         }
     }
 
@@ -41,15 +40,13 @@ public class AloneModeQuestCtrl : MonoBehaviour
         }
 
         ModeType modeType = GameManager.Instance.modeType;
-        Debug.Log($"AloneModeQuestCtrl ::: modeType = {modeType}");
 
+        // 혼자하기 모드 - 유형 01
         if (modeType == ModeType.Alone_Count)
         {
-            Debug.Log("AloneModeQuestCtrl ::: 큐브 보고 개수 맞추기");
-
             // 문제 정보 받아오기
             QuestManager.Instance.SetCurrQuest();
-            int stageID = GameManager.Instance.stageID;
+            int stageID = GameManager.Instance.stageID - 1;
             int gridSize = QuestManager.Instance.currQuest[stageID].GetGridSize();
             int gridCount = gridSize * gridSize;
             string top = QuestManager.Instance.currQuest[stageID].GetTopInfo();
@@ -67,14 +64,14 @@ public class AloneModeQuestCtrl : MonoBehaviour
             for (int i = 0; i < gridCount; i++)
             {
                 int cubeCount = int.Parse(top.Substring(i, 1));
-                Debug.Log($"AloneModeQuestCtrl ::: cubeCount = {cubeCount}");
+                GameObject gridCell = currGrid.transform.GetChild(i).gameObject;
 
                 if (cubeCount != 0)
                 {
                     for (int j = 0; j < cubeCount; j++)
                     {
                         GameObject obj = Instantiate(cubePrefab
-                                                    , currGrid.transform.GetChild(j).transform.position
+                                                    , gridCell.transform.GetChild(j).transform.position
                                                     , gameboard.transform.rotation
                                                     , cubeList.transform);
                         obj.transform.localScale = gameboard.GetComponent<GameboardCtrl>().GetCubeScale();
@@ -84,6 +81,7 @@ public class AloneModeQuestCtrl : MonoBehaviour
                 }
             }
         }
+        // 혼자하기 모드 - 유형 02, 03
         else if (modeType == ModeType.Alone_Minus || modeType == ModeType.Alone_Plus)
         {
             // Card가 없는 경우
@@ -92,12 +90,13 @@ public class AloneModeQuestCtrl : MonoBehaviour
                 cardboard = Instantiate(cardboardPrefab, playSceneCanvas.transform);
                 buttonManager.cardboard = cardboard;
                 cardCtrl = cardboard.GetComponent<CardCtrl>();
-                cardCtrl.SetCardData();
             }
             else
             {
                 cardboard.SetActive(true);
             }
+            
+            cardCtrl.SetCardData();
         }
     }
 

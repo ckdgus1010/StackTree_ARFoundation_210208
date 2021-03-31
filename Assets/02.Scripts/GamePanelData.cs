@@ -19,6 +19,7 @@ public class GamePanelData : MonoBehaviour
     public Button confirmButton;
 
     [Header("혼자하기")]
+    public InputField inputField;
     public Button checkAnswerButton;
     public Button cardButton;
 
@@ -32,6 +33,7 @@ public class GamePanelData : MonoBehaviour
         else if (modeType == ModeType.Alone_Count)
         {
             SetGamePanel01(buttonManager);
+            buttonManager.inputField = inputField;
         }
         else if (modeType == ModeType.Alone_Minus || modeType == ModeType.Alone_Plus)
         {

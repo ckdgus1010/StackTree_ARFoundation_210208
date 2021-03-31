@@ -852,8 +852,8 @@ Canvas:
   m_GameObject: {fileID: 405014981}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 2
+  m_Camera: {fileID: 1942577303}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -872,18 +872,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405014981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 2057284399865112668}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &435557215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0639ef9c45c83438c4d693f3c19811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 1848570478}
+  panelPrefab: {fileID: 266343317297457610, guid: ede2773383795d949b35c15d9f4ca62d,
+    type: 3}
+  worldCanvas: {fileID: 405014981}
+  spriteO: {fileID: 21300000, guid: 7ea9f4681f481c34d96ca5785604d3e7, type: 3}
+  spriteX: {fileID: 21300000, guid: c4ea334868102944080846a5c4e7b6ab, type: 3}
+  aloneModeQuestCtrl: {fileID: 0}
 --- !u!1 &594503495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,15 +1325,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f65e3f4564f81b46b2002d1fb2ae3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1942577303}
   gamePanelCtrl: {fileID: 735680091}
   buttonManager: {fileID: 1848570478}
   pointer: {fileID: 982465090}
   cubeCtrl: {fileID: 601603642}
+  answerManager: {fileID: 564380692}
   gameBoardPrefab: {fileID: 6952960146389938523, guid: ecdd246635dabf14899ea030973a66bc,
     type: 3}
   boardSize: 0.8
   checkboardPrefab: {fileID: 0}
-  aloneModeQuestCtrl: {fileID: 4393679682125136151, guid: e2e668d37c350984a987743a6724bc79,
+  questControllerPrefab: {fileID: 4393679682125136149, guid: e2e668d37c350984a987743a6724bc79,
     type: 3}
   playSceneCanvas: {fileID: 2143372474}
   guideCubePrefab: {fileID: 46843960625801040, guid: ea5cebc9aa63e1f4ab0b580b26e2e56a,
@@ -4175,6 +4183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchManager: {fileID: 601603640}
   pointerCtrl: {fileID: 601603641}
+  answerManager: {fileID: 564380692}
   gameboardCtrl: {fileID: 0}
   gamePanelCtrl: {fileID: 735680091}
   gamePanel_Create: {fileID: 8186445132670978719, guid: b2022e926ea9e8d4abade0281d7cc815,
@@ -4183,8 +4192,10 @@ MonoBehaviour:
   settingPanel: {fileID: 1522791174}
   settingCtrl: {fileID: 2085763692}
   screenshotCtrl: {fileID: 1044556737}
-  cardboard: {fileID: 0}
   cubeCtrl: {fileID: 601603642}
+  cardboard: {fileID: 0}
+  inputField: {fileID: 0}
+  oxPanel: {fileID: 0}
 --- !u!1 &1873374460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,8 +4720,9 @@ RectTransform:
   m_Children:
   - {fileID: 211162494}
   - {fileID: 495264581}
+  - {fileID: 2057284399865112668}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4722,7 +4734,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 405014985}
+    m_TransformParent: {fileID: 2143372478}
     m_Modifications:
     - target: {fileID: 3088597463231130419, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
@@ -4732,7 +4744,7 @@ PrefabInstance:
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
@@ -4742,12 +4754,12 @@ PrefabInstance:
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
@@ -4757,7 +4769,7 @@ PrefabInstance:
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
@@ -4797,17 +4809,17 @@ PrefabInstance:
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8767511529732828406, guid: 4cef7b9eab3050344a14caed6d7d53b2,
         type: 3}
@@ -4834,7 +4846,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3720171506632166459, guid: 4cef7b9eab3050344a14caed6d7d53b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4cef7b9eab3050344a14caed6d7d53b2, type: 3}
 --- !u!224 &2057284399865112668 stripped
 RectTransform:

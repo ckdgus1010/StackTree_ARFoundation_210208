@@ -11,10 +11,12 @@ public class TouchManager : MonoBehaviour
     private readonly List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private PointerCtrl pointerCtrl;
 
+    public Camera cam;
     public GamePanelCtrl gamePanelCtrl;
     public ButtonManager03 buttonManager;
     public GameObject pointer;
     public CubeCtrl cubeCtrl;
+    public AnswerManager answerManager;
 
     [Header("Game Board Info")]
     public GameObject gameBoardPrefab;
@@ -23,7 +25,9 @@ public class TouchManager : MonoBehaviour
     private Vector3 originScale;
 
     [Header("Quest Data - Alone Mode")]
-    public AloneModeQuestCtrl aloneModeQuestCtrl;
+    public GameObject questControllerPrefab;
+    private GameObject questController;
+    private AloneModeQuestCtrl aloneModeQuestCtrl;
     public GameObject playSceneCanvas;
 
     [Header("Guide Cube Info")]
@@ -76,8 +80,14 @@ public class TouchManager : MonoBehaviour
         // Game Board가 없는 경우
         if (currGameboard == null)
         {
+            var rot = Quaternion.LookRotation(cam.transform.position - hits[0].pose.position);
             // 게임 보드 생성
-            currGameboard = Instantiate(gameBoardPrefab, hits[0].pose.position, hits[0].pose.rotation);
+            currGameboard = Instantiate(gameBoardPrefab);
+            currGameboard.transform.position = hits[0].pose.position;
+            currGameboard.transform.rotation = Quaternion.Euler(cam.transform.position.x
+                                                               , rot.eulerAngles.y
+                                                               , cam.transform.position.z);
+
             originScale = currGameboard.transform.localScale;
 
             // 게임 보드 크기 조절
@@ -101,6 +111,13 @@ public class TouchManager : MonoBehaviour
                 Debug.Log("TouchManager ::: Checkboard 생성");
             }
 
+            // Quest Controller - Alone Mode 생성
+            questController = Instantiate(questControllerPrefab);
+            aloneModeQuestCtrl = questController.GetComponent<AloneModeQuestCtrl>();
+            aloneModeQuestCtrl.SetCurrGameboard(currGameboard);
+
+            answerManager.aloneModeQuestCtrl = aloneModeQuestCtrl;
+
             // Guide Cube 생성
             guideCube = Instantiate(guideCubePrefab, currGameboard.transform);
             guideCube.transform.localScale = gameboardCtrl.GetCubeScale();
@@ -121,7 +138,6 @@ public class TouchManager : MonoBehaviour
         pointerCtrl.isGameboardReady = true;
         pointerCtrl.gameboard = currGameboard;
 
-        aloneModeQuestCtrl.SetCurrGameboard(currGameboard);
         aloneModeQuestCtrl.SetAloneModeQuest(buttonManager, playSceneCanvas);
     }
 

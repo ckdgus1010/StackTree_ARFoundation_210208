@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager03 : MonoBehaviour
 {
     public TouchManager touchManager;
     public PointerCtrl pointerCtrl;
+    public AnswerManager answerManager;
 
     [HideInInspector]
     public GameboardCtrl gameboardCtrl;
@@ -23,11 +25,15 @@ public class ButtonManager03 : MonoBehaviour
     [Header("스크린샷")]
     public ScreenshotCtrl screenshotCtrl;
 
-    [HideInInspector]
-    public GameObject cardboard;
-
     [Header("Cube Info")]
     public CubeCtrl cubeCtrl;
+
+    [HideInInspector]
+    public GameObject cardboard;
+    [HideInInspector]
+    public InputField inputField;
+    [HideInInspector]
+    public GameObject oxPanel;
 
     // Create Mode - Game Panel 전환
     public void SetGamePanel_Create()
@@ -135,7 +141,15 @@ public class ButtonManager03 : MonoBehaviour
         // 혼자하기 유형01 - 큐브 개수 맞추기
         if (GameManager.Instance.modeType == ModeType.Alone_Count)
         {
-
+            if (inputField != null)
+            {
+                answerManager.CheckAnwerAloneMode01(inputField);
+                Debug.Log("ButtonManager03 ::: 정답 확인");
+            }
+            else
+            {
+                Debug.LogError("ButtonManager03 ::: inputField 없음");
+            }
         }
         // 혼자하기 유형 02 - 카드 보고 큐브 빼기
         else if (GameManager.Instance.modeType == ModeType.Alone_Minus)
@@ -151,10 +165,33 @@ public class ButtonManager03 : MonoBehaviour
         Debug.Log("ButtonManager03 ::: 정답 확인 끝");
     }
 
+    // 정답 확인 후 [다시하기 버튼] 클릭
+    public void ClickRetryGameButton()
+    {
+        answerManager.ResetOXPanel();
+        ResetGameBoard();
+        Debug.Log("ButtonManager03 ::: 다시하기 버튼 클릭");
+    }
+
+    // 정답 확인 후 [이어하기 버튼] 클릭
+    public void ClickContinueGameButton()
+    {
+        answerManager.ResetOXPanel();
+        Debug.Log("ButtonManager03 ::: 이어하기 버튼 클릭");
+    }
+
+    // 정답 확인 후 [다음 단계로 버튼] 클릭
+    public void ClickNextLevelButton()
+    {
+        answerManager.ResetOXPanel();
+        answerManager.ClickNextLevelButton(playSceneCanvas);
+        Debug.Log("ButtonManager03 ::: 다음 단계로 버튼 클릭");
+    }
+
+
     // Game Board 크기 조절
     public void ChangeBoardSize(float value)
     {
-        Debug.Log("크기 조절");
         touchManager.ChangeBoardSize(value);
     }
 

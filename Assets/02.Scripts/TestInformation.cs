@@ -15,9 +15,4 @@ public class TestInformation : MonoBehaviour
 
         text.text = "PlayMode: " + playModeType + "\n" + "StageID: " + stageID;
     }
-
-    public void ChangeScene()
-    {
-        SceneManager.LoadScene("01. Main Scene");
-    }
 }

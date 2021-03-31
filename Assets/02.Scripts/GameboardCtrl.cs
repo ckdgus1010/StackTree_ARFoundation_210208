@@ -38,11 +38,6 @@ public class GameboardCtrl : MonoBehaviour
 
         currGrid = gridGroup[value];
         currGrid.SetActive(true);
-
-        //if (GameManager.Instance.modeType == ModeType.Alone_Minus)
-        //{
-        //    SetCubes(value + 3);
-        //}
     }
 
     public Vector3 GetCubeScale()
