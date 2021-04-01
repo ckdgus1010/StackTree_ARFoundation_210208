@@ -76,14 +76,7 @@ public class ButtonManager03 : MonoBehaviour
 
         if (pointerCtrl.guideCube.activeSelf == true)
         {
-            if (GameManager.Instance.modeType == ModeType.Alone_Minus)
-            {
-
-            }
-            else
-            {
-                cubeCtrl.PlusCube(pointerCtrl.guideCube);
-            }
+            cubeCtrl.PlusCube(pointerCtrl.guideCube);
         }
     }
 
@@ -114,10 +107,8 @@ public class ButtonManager03 : MonoBehaviour
         {
             gameboardCtrl.ResetCubeData();
         }
-        else
-        {
-            cubeCtrl.ResetCubeData();
-        }
+        
+        cubeCtrl.ResetCubeData();
     }
 
     // Game Board 리셋
