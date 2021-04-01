@@ -161,10 +161,8 @@ public class ButtonManager03 : MonoBehaviour
             {
                 answerManager.CheckAnswerOthers();
             }
-            else
-            {
-                Debug.Log($"ButtonManager ::: cubeCtrl.list.Count = {cubeCtrl.list.Count}");
-            }
+
+            cubeCtrl.list.Clear();
         }
 
         Debug.Log("ButtonManager03 ::: 정답 확인 끝");

@@ -116,6 +116,7 @@ public class TouchManager : MonoBehaviour
             aloneModeQuestCtrl = questController.GetComponent<AloneModeQuestCtrl>();
             aloneModeQuestCtrl.SetCurrGameboard(currGameboard);
 
+            // AnswerManager에 alonModeQuestCtrl 연결
             answerManager.aloneModeQuestCtrl = aloneModeQuestCtrl;
 
             // Guide Cube 생성

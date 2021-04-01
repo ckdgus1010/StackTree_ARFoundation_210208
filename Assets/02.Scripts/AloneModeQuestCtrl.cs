@@ -46,7 +46,6 @@ public class AloneModeQuestCtrl : MonoBehaviour
             list.Clear();
         }
 
-        totalCount = 0;
         ModeType modeType = GameManager.Instance.modeType;
 
         // 혼자하기 모드 - 유형 01
@@ -67,6 +66,8 @@ public class AloneModeQuestCtrl : MonoBehaviour
             }
             currGrid = gridGroup[gridSize - 3];
             currGrid.SetActive(true);
+            
+            totalCount = 0;
 
             // 문제에 맞춰 CubePrefab 생성
             for (int i = 0; i < gridCount; i++)
@@ -90,24 +91,66 @@ public class AloneModeQuestCtrl : MonoBehaviour
                 }
             }
         }
-        // 혼자하기 모드 - 유형 02, 03
-        else if (modeType == ModeType.Alone_Minus || modeType == ModeType.Alone_Plus)
+        // 혼자하기 모드 - 유형 02
+        else if (modeType == ModeType.Alone_Minus)
         {
-            // Card가 없는 경우
-            if (cardCtrl == null)
+            // Grid Size 받아오기
+            QuestManager.Instance.SetCurrQuest();
+            int stageID = GameManager.Instance.stageID - 1;
+            int gridSize = QuestManager.Instance.currQuest[stageID].GetGridSize();
+            int gridCount = gridSize * gridSize;
+
+            // Gameboard에서 Grid 가지고 오기
+            if (currGrid != null)
             {
-                cardboard = Instantiate(cardboardPrefab, playSceneCanvas.transform);
-                buttonManager.cardboard = cardboard;
-                cardCtrl = cardboard.GetComponent<CardCtrl>();
+                currGrid.SetActive(false);
+                currGrid = null;
             }
-            else
+            currGrid = gridGroup[gridSize - 3];
+            currGrid.SetActive(true);
+
+            // 각 Grid마다 Grid Size 값만큼 Cube 생성
+            for (int i = 0; i < gridCount; i++)
             {
-                cardboard.SetActive(true);
+                GameObject obj = currGrid.transform.GetChild(i).gameObject;
+
+                for (int j = 0; j < obj.transform.childCount; j++)
+                {
+                    GameObject cube = Instantiate(cubePrefab
+                                                    , obj.transform.GetChild(j).transform.position
+                                                    , gameboard.transform.rotation
+                                                    , cubeList.transform);
+                    cube.transform.localScale = gameboard.GetComponent<GameboardCtrl>().GetCubeScale();
+
+                    list.Add(cube);
+                }
             }
-            
-            cardCtrl.SetCardData();
-            GetAnswerData();
+
+            SetCardBoard(buttonManager, playSceneCanvas);
         }
+        // 혼자하기 유형 03
+        else
+        {
+            SetCardBoard(buttonManager, playSceneCanvas);
+        }
+    }
+
+    void SetCardBoard(ButtonManager03 buttonManager, GameObject playSceneCanvas)
+    {
+        // Card가 없는 경우
+        if (cardCtrl == null)
+        {
+            cardboard = Instantiate(cardboardPrefab, playSceneCanvas.transform);
+            buttonManager.cardboard = cardboard;
+            cardCtrl = cardboard.GetComponent<CardCtrl>();
+        }
+        else
+        {
+            cardboard.SetActive(true);
+        }
+
+        cardCtrl.SetCardData();
+        GetAnswerData();
     }
 
     void GetAnswerData()
