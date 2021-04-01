@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeCtrl : MonoBehaviour
 {
     public GameObject cubePrefab;
-    private List<GameObject> list = new List<GameObject>();
+    public List<GameObject> list = new List<GameObject>();
 
     // Gameboard 정보
     private GameObject gameboard;
@@ -31,8 +31,6 @@ public class CubeCtrl : MonoBehaviour
         obj.transform.localScale = gameboardCtrl.GetCubeScale();
 
         list.Add(obj);
-
-        Debug.Log($"CubeCtrl ::: 큐브 쌓기 // {list.Count}");
     }
 
     public void MinusCube(GameObject obj)

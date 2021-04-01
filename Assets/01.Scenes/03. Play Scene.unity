@@ -746,6 +746,67 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 48a414ec6064f8942ae1058c3a4d4045, type: 3}
   - {fileID: 21300000, guid: 1f233bd680caabb4fb473b92af76179e, type: 3}
   - {fileID: 21300000, guid: 3b624e078e621834a940c74e80f768d4, type: 3}
+--- !u!1 &334623405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3088597463231130419, guid: 4cef7b9eab3050344a14caed6d7d53b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2057284399865112667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &334623406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334623405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 334623408}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &334623408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4321295215225254607, guid: 4cef7b9eab3050344a14caed6d7d53b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2057284399865112667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334623405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &376211917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,12 +1175,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0639ef9c45c83438c4d693f3c19811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonManager: {fileID: 0}
-  panelPrefab: {fileID: 0}
-  worldCanvas: {fileID: 0}
-  spriteO: {fileID: 0}
-  spriteX: {fileID: 0}
+  buttonManager: {fileID: 1848570478}
+  panelPrefab: {fileID: 266343317297457610, guid: ede2773383795d949b35c15d9f4ca62d,
+    type: 3}
+  worldCanvas: {fileID: 2143372474}
+  spriteO: {fileID: 21300000, guid: 7ea9f4681f481c34d96ca5785604d3e7, type: 3}
+  spriteX: {fileID: 21300000, guid: c4ea334868102944080846a5c4e7b6ab, type: 3}
   aloneModeQuestCtrl: {fileID: 0}
+  checkerboardCtrl: {fileID: 0}
 --- !u!1 &594503495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1396,8 @@ MonoBehaviour:
   gameBoardPrefab: {fileID: 6952960146389938523, guid: ecdd246635dabf14899ea030973a66bc,
     type: 3}
   boardSize: 0.8
-  checkboardPrefab: {fileID: 0}
+  checkboardPrefab: {fileID: 3371798546020888275, guid: 9f2d84ff956f17143b76ba0958ebaf58,
+    type: 3}
   questControllerPrefab: {fileID: 4393679682125136149, guid: e2e668d37c350984a987743a6724bc79,
     type: 3}
   playSceneCanvas: {fileID: 2143372474}
@@ -1375,6 +1439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 4198710496548822606, guid: bf99c924f4af10947ae9f273fd42ff3f,
     type: 3}
+  list: []
   cubeTr: {fileID: 0}
 --- !u!1001 &643477987
 PrefabInstance:
@@ -4182,7 +4247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchManager: {fileID: 601603640}
   pointerCtrl: {fileID: 601603641}
-  answerManager: {fileID: 0}
+  answerManager: {fileID: 564380692}
   gameboardCtrl: {fileID: 0}
   gamePanelCtrl: {fileID: 735680091}
   gamePanel_Create: {fileID: 8186445132670978719, guid: b2022e926ea9e8d4abade0281d7cc815,

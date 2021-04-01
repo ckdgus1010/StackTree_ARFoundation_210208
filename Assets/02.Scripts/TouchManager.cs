@@ -106,7 +106,8 @@ public class TouchManager : MonoBehaviour
             // Gameboard에 Checkboard 생성
             if (GameManager.Instance.modeType == ModeType.Alone_Minus || GameManager.Instance.modeType == ModeType.Alone_Plus)
             {
-                //Instantiate(checkboardPrefab, currGameBoard.transform);
+                GameObject checkerboard = Instantiate(checkboardPrefab, currGameboard.transform);
+                answerManager.checkerboardCtrl = checkerboard.GetComponent<CheckerboardCtrl>();
                 Debug.Log("TouchManager ::: Checkboard 생성");
             }
 

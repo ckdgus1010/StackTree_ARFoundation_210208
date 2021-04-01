@@ -18,7 +18,12 @@ public class AloneModeQuestCtrl : MonoBehaviour
     private GameObject currGrid;
     private List<GameObject> list = new List<GameObject>();
 
-    public int totalCount = 0;
+
+    [HideInInspector] public int totalCount = 0;
+    [HideInInspector] public int gridSize = 0;
+    [HideInInspector] public string front;
+    [HideInInspector] public string side;
+    [HideInInspector] public string top;
 
     public void SetCurrGameboard(GameObject currGameboard)
     {
@@ -101,7 +106,16 @@ public class AloneModeQuestCtrl : MonoBehaviour
             }
             
             cardCtrl.SetCardData();
+            GetAnswerData();
         }
+    }
+
+    void GetAnswerData()
+    {
+        gridSize = cardCtrl.gridSize;
+        front = cardCtrl.front;
+        side = cardCtrl.side;
+        top = cardCtrl.top;
     }
 
     public void ResetAloneModeQuestData()

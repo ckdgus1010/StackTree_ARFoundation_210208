@@ -136,8 +136,10 @@ public class ButtonManager03 : MonoBehaviour
     {
         SoundManager.Instance.ClickButton();
 
+        ModeType modeType = GameManager.Instance.modeType;
+
         // 혼자하기 유형01 - 큐브 개수 맞추기
-        if (GameManager.Instance.modeType == ModeType.Alone_Count)
+        if (modeType == ModeType.Alone_Count)
         {
             if (inputField != null)
             {
@@ -149,15 +151,20 @@ public class ButtonManager03 : MonoBehaviour
                 Debug.LogError("ButtonManager03 ::: inputField 없음");
             }
         }
-        // 혼자하기 유형 02 - 카드 보고 큐브 빼기
-        else if (GameManager.Instance.modeType == ModeType.Alone_Minus)
+        else if (modeType == ModeType.None || modeType == ModeType.Create)
         {
-
+            Debug.LogError($"ButtonManager03 ::: 정답 확인 할 수 없음 // modeType = {modeType}");
         }
-        // 혼자하기 유형 03 - 카드 보고 큐브 쌓기
-        else if (GameManager.Instance.modeType == ModeType.Alone_Plus)
+        else
         {
-
+            if (cubeCtrl.list.Count > 0)
+            {
+                answerManager.CheckAnswerOthers();
+            }
+            else
+            {
+                Debug.Log($"ButtonManager ::: cubeCtrl.list.Count = {cubeCtrl.list.Count}");
+            }
         }
 
         Debug.Log("ButtonManager03 ::: 정답 확인 끝");

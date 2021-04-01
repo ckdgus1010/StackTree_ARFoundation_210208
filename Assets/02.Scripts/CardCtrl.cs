@@ -9,6 +9,11 @@ public class CardCtrl : MonoBehaviour
     public CardData sideCard;
     public CardData topCard;
 
+    [HideInInspector] public int gridSize;
+    [HideInInspector] public string front;
+    [HideInInspector] public string side;
+    [HideInInspector] public string top;
+
     public void SetCardData()
     {
         // 문제 정보 가져오기
@@ -17,10 +22,10 @@ public class CardCtrl : MonoBehaviour
         // 현재 단계 확인하기
         int stageID = GameManager.Instance.stageID - 1;
 
-        int gridSize = QuestManager.Instance.currQuest[stageID].GetGridSize();
-        string front = QuestManager.Instance.currQuest[stageID].GetFrontInfo();
-        string side = QuestManager.Instance.currQuest[stageID].GetSideInfo();
-        string top = QuestManager.Instance.currQuest[stageID].GetTopInfo();
+        gridSize = QuestManager.Instance.currQuest[stageID].GetGridSize();
+        front = QuestManager.Instance.currQuest[stageID].GetFrontInfo();
+        side = QuestManager.Instance.currQuest[stageID].GetSideInfo();
+        top = QuestManager.Instance.currQuest[stageID].GetTopInfo();
 
         frontCard.SetCardData(gridSize, front);
         sideCard.SetCardData(gridSize, side);
