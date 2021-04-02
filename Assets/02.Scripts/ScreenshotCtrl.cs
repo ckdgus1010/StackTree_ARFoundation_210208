@@ -35,7 +35,7 @@ public class ScreenshotCtrl : MonoBehaviour
         }
 
         // 스크린샷 횟수 AchievementManager에 업데이트
-        AchievementManager.Instance.GetAchievement04();
+        AchievementManager.Instance.UpdateAchievementData(AchievementState.Screenshot_Count);
     }
 
     IEnumerator CaptureScreenshot()

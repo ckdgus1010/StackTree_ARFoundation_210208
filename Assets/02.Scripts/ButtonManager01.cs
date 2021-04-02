@@ -27,7 +27,7 @@ public class ButtonManager01 : MonoBehaviour
     [Header("Profile Panel")]
     public GameObject profilePanel;
     public Scrollbar achievementScrollbar;
-    public AchievementData achievement;
+    public AchievementData achievementData;
     public GameObject profileHelpPanel;
 
     [Header("Setting Panel")]
@@ -111,6 +111,7 @@ public class ButtonManager01 : MonoBehaviour
         Debug.Log("ButtonManager01 ::: [CreateMode] 버튼 클릭");
 
         SoundManager.Instance.ClickButton();
+        AchievementManager.Instance.UpdateAchievementData(AchievementState.CreateMode_Count);
         SceneManager.LoadScene("03. Play Scene");
     }
 
@@ -195,7 +196,7 @@ public class ButtonManager01 : MonoBehaviour
         achievementScrollbar.value = 1.0f;
         mainMenuCtrl.ChangeSwipingState();
         profilePanel.SetActive(!profilePanel.activeSelf);
-        achievement.UpdateAchievementStatus();
+        achievementData.UpdateAchievementStatus();
     }
 
     // 프로필 팝업 - [도움말] 버튼 클릭 시
@@ -224,6 +225,7 @@ public class ButtonManager01 : MonoBehaviour
         SoundManager.Instance.ClickButton();
 
         settingPanel.SetActive(false);
+        AchievementManager.Instance.UpdateAchievementData(AchievementState.CreditRun_Count);
         canvasManager.ClickCreditButton();
     }
 

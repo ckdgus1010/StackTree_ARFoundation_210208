@@ -1,34 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AchievementData : MonoBehaviour
 {
-    public int achievementID = 0;
-    public GameObject achievementImage;
-    public GameObject questionImage;
-
-    public AchievementData[] achievementArray = new AchievementData[9];
+    public float size = 380;
+    public Image[] achievementImages;
+    private List<Vector2> imageSizeList = new List<Vector2>();
 
     // 프로필 팝업창 오픈 시 업적 정보를 확인
     public void UpdateAchievementStatus()
     {
-        // Achievement Scroll View에서만 사용할 것
-        if (achievementID == 1000)
+        // 크기 저장
+        if (imageSizeList.Count == 0)
         {
-            for (int i = 0; i < achievementArray.Length; i++)
+            for (int i = 0; i < achievementImages.Length; i++)
             {
-                achievementArray[i].CheckAchievementStatus();
+                Vector2 imageSize = achievementImages[i].rectTransform.sizeDelta;
+                imageSizeList.Add(imageSize);
             }
         }
-    }
 
-    public void CheckAchievementStatus()
-    {
-        // AchievementManager 업적 달성 여부 확인
-        bool isAchieved = AchievementManager.Instance.achievement[achievementID - 1];
-
-        achievementImage.SetActive(isAchieved);
-        questionImage.SetActive(!isAchieved);
+        for (int i = 0; i < achievementImages.Length; i++)
+        {
+            if (AchievementManager.Instance.achievement[i] == true)
+            {
+                achievementImages[i].sprite = AchievementManager.Instance.achievementSprites[i];
+                achievementImages[i].rectTransform.sizeDelta = imageSizeList[i];
+            }
+            else
+            {
+                achievementImages[i].sprite = AchievementManager.Instance.achievementLockSprite;
+                achievementImages[i].rectTransform.sizeDelta = new Vector2(size, size);
+            }
+        }
     }
 }

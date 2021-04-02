@@ -164,6 +164,9 @@ public class AnswerManager : MonoBehaviour
             titleText.text = "틀렸습니다!!";
             exitGameButton.transform.gameObject.SetActive(true);
             nextLevelButton.transform.gameObject.SetActive(false);
+
+            // 업적 정보 업데이트(최초 오답)
+            AchievementManager.Instance.UpdateAchievementData(AchievementState.Fail_Count);
         }
     }
 
@@ -171,6 +174,9 @@ public class AnswerManager : MonoBehaviour
     {
         int stageID = GameManager.Instance.stageID - 1;
         GameManager.Instance.currStageStateArray[stageID] = AloneModeStageState.Cleared;
+
+        // 업적 정보 업데이트(혼자하기 - 단계 모두 클리어)
+        AchievementManager.Instance.UpdateAchievementData(AchievementState.AloneModeClear_Count);
 
         int count = GameManager.Instance.currStageStateArray.Length - 1;
         if (stageID != count)
