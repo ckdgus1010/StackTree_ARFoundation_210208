@@ -26,9 +26,12 @@ public class ButtonManager01 : MonoBehaviour
 
     [Header("Profile Panel")]
     public GameObject profilePanel;
+    public Text usernameText;
+    public Image profileImage;
     public Scrollbar achievementScrollbar;
     public AchievementData achievementData;
     public GameObject profileHelpPanel;
+    public GameObject profileImagemodificationPanel;
 
     [Header("Setting Panel")]
     public GameObject settingPanel;
@@ -188,18 +191,26 @@ public class ButtonManager01 : MonoBehaviour
     // 메인 메뉴 - [프로필] 버튼 클릭 시
     public void ClickProfileButton()
     {
-        Debug.Log($"ButtonManager ::: ClickProfileButton()");
-
         // 버튼 소리
         SoundManager.Instance.ClickButton();
 
-        achievementScrollbar.value = 1.0f;
         mainMenuCtrl.ChangeSwipingState();
+        
+        achievementScrollbar.value = 1.0f;
+        usernameText.text = GameManager.Instance.username;
+        profileImage.sprite = GameManager.Instance.profileImages[GameManager.Instance.profileImageNum];
         profilePanel.SetActive(!profilePanel.activeSelf);
+
         achievementData.UpdateAchievementStatus();
     }
 
-    // 프로필 팝업 - [도움말] 버튼 클릭 시
+    // 프로필 팝업 - [프로필 사진 수정 버튼] 클릭 시
+    public void ClickProfileImageModificationButton()
+    {
+        profileImagemodificationPanel.SetActive(!profileImagemodificationPanel.activeSelf);
+    }
+
+    // 프로필 팝업 - [도움말 버튼] 클릭 시
     public void ClickProfileHelpPanel()
     {
         SoundManager.Instance.ClickButton();
