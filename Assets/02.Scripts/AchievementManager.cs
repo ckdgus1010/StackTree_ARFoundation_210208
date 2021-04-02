@@ -53,9 +53,9 @@ public class AchievementManager : MonoBehaviour
     //--------------------------------------------------------------
 
     [Header("업적")]
-    public bool[] achievement = new bool[9] { false, false, false
-                                            , false, false, false
-                                            , false, false, false };
+    public bool[] achievementInfo = new bool[9] { false, false, false
+                                                , false, false, false
+                                                , false, false, false };
 
 
     [Header("업적 현황")]
@@ -84,7 +84,8 @@ public class AchievementManager : MonoBehaviour
     private int creditRunCountStd = 1;
     private int aloneModeClearCountStd = 150;
 
-    private int[] countArray;
+    [HideInInspector]
+    public int[] currAchievementState;
     private int[] stdArray;
 
     [Header("업적 달성 이미지")]
@@ -95,7 +96,7 @@ public class AchievementManager : MonoBehaviour
 
     void Start()
     {
-        countArray = new int[] { loginCount, achievementCount, masterCount
+        currAchievementState = new int[] { loginCount, achievementCount, masterCount
                                , screenshotCount, createModeCount, overPlayTimeCount
                                , failCount, creditRunCount, aloneModeClearCount };
 
@@ -115,161 +116,17 @@ public class AchievementManager : MonoBehaviour
     {
         int num = (int)state;
 
-        if (achievement[num] == false)
+        if (achievementInfo[num] == false)
         {
-            countArray[num] += 1;
-            Debug.Log($"AchievementManager ::: {num} // {countArray[num]}");
+            currAchievementState[num] += 1;
+            Debug.Log($"AchievementManager ::: {num} // {currAchievementState[num]}");
 
-            if (countArray[num] >= stdArray[num])
+            if (currAchievementState[num] >= stdArray[num])
             {
-                achievement[num] = true;
+                achievementInfo[num] = true;
                 SaveAchievementData(num);
 
                 Debug.Log($"AchievementManager ::: 업적 0{num + 1} 클리어");
-            }
-        }
-    }
-
-    // 업적 01 ::: 반가워요!! - 첫 로그인 시 획득
-    public void CheckLoginAchievement()
-    {
-        if (achievement[0] == false)
-        {
-            loginCount += 1;
-
-            if (loginCount >= loginCountStd)
-            {
-                achievement[0] = true;
-                SaveAchievementData(0);
-
-                Debug.Log("AchievementManager ::: 업적 01 클리어");
-            }
-        }
-    }
-
-    // 업적 02 ::: 당신은 고인물?!?! - 모든 업적 달성 시 획득
-    public void CheckAllAchievement()
-    {
-        if (achievement[1] == false)
-        {
-            //clearCount += 1;
-
-            //if (clearCount >= achievementCountStd)
-            //{
-            //    Debug.Log("AchievementManager ::: 업적 02 클리어");
-            //    achievement[1] = true;
-
-            //    SaveAchievementData(1);
-            //}
-        }
-    }
-
-    // 업적 03 ::: 리더십!! - 같이하기 모드에서 '방장' 5번 수행 시 획득
-    public void CheckLeaderShipAchievement()
-    {
-        if (achievement[2] == false)
-        {
-            masterCount += 1;
-
-            if (masterCount >= masterCountStd)
-            {
-                achievement[2] = true;
-                SaveAchievementData(2);
-
-                Debug.Log("AchievementManager ::: 업적 03 클리어");
-            }
-        }
-    }
-
-    // 업적 04 ::: 찍사!! - 스크린샷 5회 시 획득
-    public void CheckScreenshotCoutnAchievement()
-    {
-        if (achievement[3] == false)
-        {
-            screenshotCount += 1;
-
-            if (screenshotCount >= screenshotCountStd)
-            {
-                achievement[3] = true;
-                SaveAchievementData(3);
-
-                Debug.Log("AchievementManager ::: 업적 04 클리어");
-            }
-        }
-    }
-
-    // 업적 05 ::: 당신도 Creator - Create Mode 최초 1회 실행 시 획득
-    public void CheckCreateModeCountAchievement()
-    {
-        if (achievement[4] == false)
-        {
-            createModeCount += 1;
-
-            if (createModeCount >= createModeCountStd)
-            {
-                achievement[4] = true;
-                SaveAchievementData(4);
-
-                Debug.Log("AchievementManager ::: 업적 05 클리어");
-            }
-        }
-    }
-
-    // 업적 06 ::: 애송이 - 혼자하기 모드 5분 이상 실행 시 획득
-    public void CheckAloneModePlayTimeAchievement()
-    {
-        //if (playTimer >= playTimerStd)
-        //{
-        //    Debug.Log("AchievementManager ::: 업적 06 클리어");
-        //    achievement[5] = true;
-
-        //    SaveAchievementData(5);
-        //}
-    }
-
-    // 업적 07 ::: 실패는 성공의 어머니 - 최초 오답 시 획득
-    public void CheckFailCountAchievement()
-    {
-        if (achievement[6] == false)
-        {
-            failCount += 1;
-
-            if (failCount >= failCountStd)
-            {
-                achievement[6] = true;
-                SaveAchievementData(6);
-
-                Debug.Log("AchievementManager ::: 업적 07 클리어");
-            }
-        }
-    }
-
-    // 업적 08 ::: 우리의 게임을 즐겨줘서 고마워요!! - 크레딧 최초 실행 시 획득
-    public void GetAchievement08()
-    {
-        if (achievement[7] == false)
-        {
-            Debug.Log("AchievementManager ::: 업적 08 클리어");
-            achievement[7] = true;
-
-            SaveAchievementData(7);
-        }
-    }
-
-    // 없애야 함?
-    // 업적 09 ::: 혼자하기 마스터!! - 혼자하기 모드에서 별 81개 수집 시 획득
-    public void GetAchievement09()
-    {
-        if (achievement[8] == false)
-        {
-            aloneModeClearCount += 1;
-
-            if (aloneModeClearCount >= aloneModeClearCountStd)
-            {
-                Debug.Log("AchievementManager ::: 업적 09 클리어");
-                achievement[8] = true;
-
-                SaveAchievementData(8);
             }
         }
     }
@@ -279,25 +136,18 @@ public class AchievementManager : MonoBehaviour
     // 클리어한 정보 저장하기
     void SaveAchievementData(int order)
     {
-        //Debug.Log($"AchievementManager ::: 업적 0{order + 1} 클리어 정보 저장");
+        SaveManager.achievementInfo[order] = true;
+        SaveManager.Save();
 
-        //SaveManager.achievement[order] = true;
-        //SaveManager.Save();
+        Debug.Log($"AchievementManager ::: 업적 0{order + 1} 클리어 정보 저장");
     }
 
     // 업적 정보 리셋
     public void ResetAchievementData()
     {
-        loginCount = 0;
-        achievementCount = 0;
-        masterCount = 0;
-
-        screenshotCount = 0;
-        createModeCount = 0;
-        overPlayTimeCount = 0;
-
-        failCount = 0;
-        creditRunCount = 0;
-        aloneModeClearCount = 0;
+        for (int i = 0; i < currAchievementState.Length; i++)
+        {
+            currAchievementState[i] = 0;
+        }
     }
 }

@@ -39,7 +39,7 @@ public class AnswerManager : MonoBehaviour
 
                 GameManager.Instance.currStageStateArray[stageID] = AloneModeStageState.Cleared;
 
-                if (stageID != GameManager.Instance.currStageStateArray.Length - 1)
+                if (stageID != GameManager.Instance.currStageStateArray.Count - 1)
                 {
                     GameManager.Instance.currStageStateArray[stageID + 1] = AloneModeStageState.Current;
                     Debug.Log("AnswerManager ::: 축하합니다. 모든 스테이지를 클리어했습니다.");
@@ -178,7 +178,7 @@ public class AnswerManager : MonoBehaviour
         // 업적 정보 업데이트(혼자하기 - 단계 모두 클리어)
         AchievementManager.Instance.UpdateAchievementData(AchievementState.AloneModeClear_Count);
 
-        int count = GameManager.Instance.currStageStateArray.Length - 1;
+        int count = GameManager.Instance.currStageStateArray.Count - 1;
         if (stageID != count)
         {
             int _stageID = stageID + 1;

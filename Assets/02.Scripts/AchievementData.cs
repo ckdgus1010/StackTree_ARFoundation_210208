@@ -24,7 +24,7 @@ public class AchievementData : MonoBehaviour
 
         for (int i = 0; i < achievementImages.Length; i++)
         {
-            if (AchievementManager.Instance.achievement[i] == true)
+            if (AchievementManager.Instance.achievementInfo[i] == true)
             {
                 achievementImages[i].sprite = AchievementManager.Instance.achievementSprites[i];
                 achievementImages[i].rectTransform.sizeDelta = imageSizeList[i];

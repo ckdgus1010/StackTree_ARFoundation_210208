@@ -18219,7 +18219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746a31db972539f43b6eae096d9138b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achievement: 000000000000000000
+  achievementInfo: 000000000000000000
   loginCount: 0
   achievementCount: 0
   masterCount: 0
@@ -18229,6 +18229,7 @@ MonoBehaviour:
   failCount: 0
   creditRunCount: 0
   aloneModeClearCount: 0
+  currAchievementState: 
   achievementLockSprite: {fileID: 21300000, guid: c681f6a9ff9f8a047b5d668cbf678448,
     type: 3}
   achievementSprites:
@@ -18593,7 +18594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9acd06c099623c48b878dbdc9675f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userName: 
+  username: 
   profileImageNum: 0
   profileImages:
   - {fileID: 21300000, guid: 5758341aa7088fa4da2832d52f813a6e, type: 3}
@@ -21929,7 +21930,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1450566008}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:

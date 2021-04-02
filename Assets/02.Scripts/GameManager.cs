@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     //--------------------------------------------------------------
 
     [Header("User Information")]
-    public string userName;
+    public string username;
     public int profileImageNum = 0;
     public Sprite[] profileImages;
 
@@ -68,23 +68,29 @@ public class GameManager : MonoBehaviour
 
     [Header("혼자하기 모드별 단계 관리")]
     public int currentStageID = 0;
-    public AloneModeStageState[] currStageStateArray;
-    public AloneModeStageState[][] aloneModeStage;
-    public AloneModeStageState[] alone_01;
-    public AloneModeStageState[] alone_02;
-    public AloneModeStageState[] alone_03;
+    public List<AloneModeStageState> currStageStateArray = new List<AloneModeStageState>();
+    public List<AloneModeStageState> alone_01 = new List<AloneModeStageState>();
+    public List<AloneModeStageState> alone_02 = new List<AloneModeStageState>();
+    public List<AloneModeStageState> alone_03 = new List<AloneModeStageState>();
 
     void Start()
     {
+        SaveManager.Load();
+        //SetDefaultGameData();
+    }
+
+    public void SetDefaultGameData()
+    {
         SetDefaultPlayerData();
         SetDefaultAloneModeStatus();
+        SaveManager.Save();
     }
 
     void SetDefaultPlayerData()
     {
         // User Name 설정
         int num = Random.Range(0, 10000);
-        userName = "Guset" + num.ToString();
+        username = "Guset" + num.ToString();
 
         // 프로필 이미지 설정
         profileImageNum = 0;
@@ -96,19 +102,15 @@ public class GameManager : MonoBehaviour
     // 기본 혼자하기 모드 데이터 설정
     void SetDefaultAloneModeStatus()
     {
-        currStageStateArray = new AloneModeStageState[stageCount];
-        alone_01 = new AloneModeStageState[stageCount];
-        alone_02 = new AloneModeStageState[stageCount];
-        alone_03 = new AloneModeStageState[stageCount];
-
-        aloneModeStage = new AloneModeStageState[][] { alone_01, alone_02, alone_03 };
-
-        for (int i = 0; i < aloneModeStage.Length; i++)
+        for (int i = 0; i < stageCount; i++)
         {
-            for (int j = 0; j < stageCount; j++)
-            {
-                aloneModeStage[i][j] = j == 0 ? AloneModeStageState.Current : AloneModeStageState.Closed;
-            }
+            AloneModeStageState state = i == 0 ? AloneModeStageState.Current : AloneModeStageState.Closed;
+
+            alone_01.Add(state);
+            alone_02.Add(state);
+            alone_03.Add(state);
         }
+
+
     }
 }

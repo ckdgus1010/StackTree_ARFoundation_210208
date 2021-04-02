@@ -144,7 +144,7 @@ public class StageCtrl : MonoBehaviour
         // 팝업 제목 설정
         SetTitleText();
 
-        for (int i = 0; i < GameManager.Instance.currStageStateArray.Length; i++)
+        for (int i = 0; i < GameManager.Instance.currStageStateArray.Count; i++)
         {
             // 현재 단계 상태 확인
             AloneModeStageState status = GameManager.Instance.currStageStateArray[i];
