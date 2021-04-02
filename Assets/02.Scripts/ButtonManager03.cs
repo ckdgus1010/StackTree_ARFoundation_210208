@@ -188,6 +188,8 @@ public class ButtonManager03 : MonoBehaviour
 
         answerManager.ResetOXPanel();
         answerManager.ClickNextLevelButton(playSceneCanvas);
+
+        cubeCtrl.ResetCubeData();
         Debug.Log("ButtonManager03 ::: 다음 단계로 버튼 클릭");
     }
 

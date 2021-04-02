@@ -119,9 +119,6 @@ public class AnswerManager : MonoBehaviour
         SetOXPanel(isPlayerRight);
     }
 
-
-
-
     void SetOXPanel(bool _isCorrect)
     {
         if (oxPanel == null)
@@ -170,6 +167,7 @@ public class AnswerManager : MonoBehaviour
         }
     }
 
+    // 클리어 정보 업데이트
     void UpdateStageState()
     {
         int stageID = GameManager.Instance.stageID - 1;
@@ -188,6 +186,9 @@ public class AnswerManager : MonoBehaviour
         {
             Debug.Log($"AnswerManager ::: 축하합니다. {GameManager.Instance.modeType}의 모든 스테이지를 클리어했습니다.");
         }
+
+        // 정보 저장
+        SaveManager.Save();
     }
 
     public void ResetOXPanel()

@@ -19,6 +19,9 @@ public class AloneModeQuestCtrl : MonoBehaviour
     private List<GameObject> list = new List<GameObject>();
     private int currGridSize = 0;
 
+    private int gridCount = 0;
+    private int stageID = 0;
+
 
     [HideInInspector] public int totalCount = 0;
     [HideInInspector] public int gridSize = 0;
@@ -36,6 +39,7 @@ public class AloneModeQuestCtrl : MonoBehaviour
         }
     }
 
+    // 혼자하기 모드 문제 설정
     public void SetAloneModeQuest(ButtonManager03 buttonManager, GameObject playSceneCanvas)
     {
         if (list.Count > 0)
@@ -52,21 +56,9 @@ public class AloneModeQuestCtrl : MonoBehaviour
         // 혼자하기 모드 - 유형 01
         if (modeType == ModeType.Alone_Count)
         {
-            // 문제 정보 받아오기
-            QuestManager.Instance.SetCurrQuest();
-            int stageID = GameManager.Instance.stageID - 1;
-            int gridSize = QuestManager.Instance.currQuest[stageID].GetGridSize();
-            int gridCount = gridSize * gridSize;
-            string top = QuestManager.Instance.currQuest[stageID].GetTopInfo();
+            ChangeGridSize();
 
-            // Gameboard에서 Grid 가지고 오기
-            if (currGrid != null)
-            {
-                currGrid.SetActive(false);
-                currGrid = null;
-            }
-            currGrid = gridGroup[gridSize - 3];
-            currGrid.SetActive(true);
+            string top = QuestManager.Instance.currQuest[stageID].GetTopInfo();
             
             totalCount = 0;
 
@@ -95,31 +87,7 @@ public class AloneModeQuestCtrl : MonoBehaviour
         // 혼자하기 모드 - 유형 02
         else if (modeType == ModeType.Alone_Minus)
         {
-            // Grid Size 받아오기
-            QuestManager.Instance.SetCurrQuest();
-            int stageID = GameManager.Instance.stageID - 1;
-            int gridSize = QuestManager.Instance.currQuest[stageID].GetGridSize();
-            int gridCount = gridSize * gridSize;
-
-            if (currGridSize != gridSize)
-            {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    Destroy(list[i]);
-                }
-                list.Clear();
-            }
-
-            currGridSize = gridSize;
-
-            // Gameboard에서 Grid 가지고 오기
-            if (currGrid != null)
-            {
-                currGrid.SetActive(false);
-                currGrid = null;
-            }
-            currGrid = gridGroup[gridSize - 3];
-            currGrid.SetActive(true);
+            ChangeGridSize();
 
             // 각 Grid마다 Grid Size 값만큼 Cube 생성
             if (list.Count == 0)
@@ -150,8 +118,40 @@ public class AloneModeQuestCtrl : MonoBehaviour
         // 혼자하기 유형 03
         else
         {
+            ChangeGridSize();
+
             SetCardBoard(buttonManager, playSceneCanvas);
         }
+    }
+
+    // Grid Size 변경
+    void ChangeGridSize()
+    {
+        // Grid Size 받아오기
+        QuestManager.Instance.SetCurrQuest();
+        stageID = GameManager.Instance.stageID - 1;
+        int gridSize = QuestManager.Instance.currQuest[stageID].GetGridSize();
+        gridCount = gridSize * gridSize;
+
+        if (currGridSize != gridSize)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                Destroy(list[i]);
+            }
+            list.Clear();
+        }
+
+        currGridSize = gridSize;
+
+        // Gameboard에서 Grid 가지고 오기
+        if (currGrid != null)
+        {
+            currGrid.SetActive(false);
+            currGrid = null;
+        }
+        currGrid = gridGroup[gridSize - 3];
+        currGrid.SetActive(true);
     }
 
     public void ResetCubeData()
