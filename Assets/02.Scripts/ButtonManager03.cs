@@ -12,6 +12,8 @@ public class ButtonManager03 : MonoBehaviour
 
     [HideInInspector]
     public GameboardCtrl gameboardCtrl;
+    [HideInInspector]
+    public AloneModeQuestCtrl aloneModeQuestCtrl;
 
     [Header("Create Mode")]
     public GamePanelCtrl gamePanelCtrl;
@@ -105,7 +107,7 @@ public class ButtonManager03 : MonoBehaviour
 
         if (GameManager.Instance.modeType == ModeType.Alone_Minus)
         {
-            gameboardCtrl.ResetCubeData();
+            aloneModeQuestCtrl.ResetCubeData();
         }
         
         cubeCtrl.ResetCubeData();
@@ -116,10 +118,8 @@ public class ButtonManager03 : MonoBehaviour
     {
         SoundManager.Instance.ClickButton();
 
-        
-
         touchManager.ResetTouchData();
-        cubeCtrl.ResetCubeData();
+        ResetCubes();
     }
 
     // 정답 확인
@@ -128,32 +128,35 @@ public class ButtonManager03 : MonoBehaviour
         SoundManager.Instance.ClickButton();
 
         ModeType modeType = GameManager.Instance.modeType;
-
-        // 혼자하기 유형01 - 큐브 개수 맞추기
-        if (modeType == ModeType.Alone_Count)
+        switch(modeType)
         {
-            if (inputField != null)
-            {
-                answerManager.CheckAnwerAloneMode01(inputField);
-                Debug.Log("ButtonManager03 ::: 정답 확인");
-            }
-            else
-            {
-                Debug.LogError("ButtonManager03 ::: inputField 없음");
-            }
-        }
-        else if (modeType == ModeType.None || modeType == ModeType.Create)
-        {
-            Debug.LogError($"ButtonManager03 ::: 정답 확인 할 수 없음 // modeType = {modeType}");
-        }
-        else
-        {
-            if (cubeCtrl.list.Count > 0)
-            {
+            case ModeType.None:
+            case ModeType.Create:
+                Debug.LogError($"ButtonManager03 ::: 정답 확인 할 수 없음 // modeType = {modeType}");
+                break;
+            case ModeType.Alone_Count:
+                if (inputField != null)
+                {
+                    answerManager.CheckAnwerAloneMode01(inputField);
+                    Debug.Log("ButtonManager03 ::: 정답 확인");
+                }
+                else
+                {
+                    Debug.LogError("ButtonManager03 ::: inputField 없음");
+                }
+                break;
+            case ModeType.Alone_Minus:
                 answerManager.CheckAnswerOthers();
-            }
-
-            cubeCtrl.list.Clear();
+                //cubeCtrl.list.Clear();
+                break;
+            case ModeType.Alone_Plus:
+                Debug.Log($"ButtonManager03 ::: cubeCtrl.list.Count = {cubeCtrl.list.Count}");
+                if (cubeCtrl.list.Count > 0)
+                {
+                    answerManager.CheckAnswerOthers();
+                }
+                //cubeCtrl.list.Clear();
+                break;
         }
 
         Debug.Log("ButtonManager03 ::: 정답 확인 끝");
@@ -205,6 +208,7 @@ public class ButtonManager03 : MonoBehaviour
     public void ClickSettingButton()
     {
         SoundManager.Instance.ClickButton();
+
         settingPanel.SetActive(!settingPanel.activeSelf);
         settingCtrl.SetSoundData(settingPanel.activeSelf);
     }
@@ -213,6 +217,7 @@ public class ButtonManager03 : MonoBehaviour
     public void ClickGameRetryButton()
     {
         SoundManager.Instance.ClickButton();
+
         ResetGameBoard();
         ClickSettingButton();
     }
@@ -221,6 +226,7 @@ public class ButtonManager03 : MonoBehaviour
     public void ClickGameExitButton()
     {
         SoundManager.Instance.ClickButton();
+
         SceneManager.LoadScene("01. Main Scene");
     }
 }

@@ -48,11 +48,7 @@ public class CubeCtrl : MonoBehaviour
 
         Debug.Log("CubeCtrl ::: 큐브 리셋 시작");
 
-        if (GameManager.Instance.modeType == ModeType.Alone_Minus)
-        {
-
-        }
-        else if (GameManager.Instance.modeType == ModeType.Create || GameManager.Instance.modeType == ModeType.Alone_Plus)
+        if (GameManager.Instance.modeType == ModeType.Create || GameManager.Instance.modeType == ModeType.Alone_Plus)
         {
             for (int i = 0; i < list.Count; i++)
             {

@@ -138,6 +138,7 @@ public class TouchManager : MonoBehaviour
         pointerCtrl.isGameboardReady = true;
         pointerCtrl.gameboard = currGameboard;
 
+        buttonManager.aloneModeQuestCtrl = aloneModeQuestCtrl;
         aloneModeQuestCtrl.SetAloneModeQuest(buttonManager, playSceneCanvas);
     }
 

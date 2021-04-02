@@ -17,6 +17,7 @@ public class AloneModeQuestCtrl : MonoBehaviour
     private GameObject[] gridGroup;
     private GameObject currGrid;
     private List<GameObject> list = new List<GameObject>();
+    private int currGridSize = 0;
 
 
     [HideInInspector] public int totalCount = 0;
@@ -100,6 +101,17 @@ public class AloneModeQuestCtrl : MonoBehaviour
             int gridSize = QuestManager.Instance.currQuest[stageID].GetGridSize();
             int gridCount = gridSize * gridSize;
 
+            if (currGridSize != gridSize)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Destroy(list[i]);
+                }
+                list.Clear();
+            }
+
+            currGridSize = gridSize;
+
             // Gameboard에서 Grid 가지고 오기
             if (currGrid != null)
             {
@@ -110,20 +122,27 @@ public class AloneModeQuestCtrl : MonoBehaviour
             currGrid.SetActive(true);
 
             // 각 Grid마다 Grid Size 값만큼 Cube 생성
-            for (int i = 0; i < gridCount; i++)
+            if (list.Count == 0)
             {
-                GameObject obj = currGrid.transform.GetChild(i).gameObject;
-
-                for (int j = 0; j < obj.transform.childCount; j++)
+                for (int i = 0; i < gridCount; i++)
                 {
-                    GameObject cube = Instantiate(cubePrefab
-                                                    , obj.transform.GetChild(j).transform.position
-                                                    , gameboard.transform.rotation
-                                                    , cubeList.transform);
-                    cube.transform.localScale = gameboard.GetComponent<GameboardCtrl>().GetCubeScale();
+                    GameObject obj = currGrid.transform.GetChild(i).gameObject;
 
-                    list.Add(cube);
+                    for (int j = 0; j < obj.transform.childCount; j++)
+                    {
+                        GameObject cube = Instantiate(cubePrefab
+                                                        , obj.transform.GetChild(j).transform.position
+                                                        , gameboard.transform.rotation
+                                                        , cubeList.transform);
+                        cube.transform.localScale = gameboard.GetComponent<GameboardCtrl>().GetCubeScale();
+
+                        list.Add(cube);
+                    }
                 }
+            }
+            else
+            {
+                ResetCubeData();
             }
 
             SetCardBoard(buttonManager, playSceneCanvas);
@@ -132,6 +151,16 @@ public class AloneModeQuestCtrl : MonoBehaviour
         else
         {
             SetCardBoard(buttonManager, playSceneCanvas);
+        }
+    }
+
+    public void ResetCubeData()
+    {
+        Debug.Log($"AloneModeQuestCtrl ::: list.Count = {list.Count}");
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            list[i].SetActive(true);
         }
     }
 

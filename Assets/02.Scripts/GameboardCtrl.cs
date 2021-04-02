@@ -47,39 +47,4 @@ public class GameboardCtrl : MonoBehaviour
         
         return scale;
     }
-
-    public void SetCubes(int _value)
-    {
-        if (list.Count == 0)
-        {
-            int gridCount = currGrid.transform.childCount;
-
-            for (int i = 0; i < gridCount; i++)
-            {
-                for (int j = 0; j < _value; j++)
-                {
-                    GameObject obj = Instantiate(cubePrefab, cubeList.transform);
-                    obj.transform.position = currGrid.transform.GetChild(i).position;
-                    obj.transform.rotation = currGrid.transform.GetChild(i).rotation;
-                    obj.transform.localScale = currGrid.transform.localScale;
-
-                    list.Add(obj);
-                }
-            }
-        }
-        else
-        {
-            ResetCubeData();
-        }
-    }
-
-    public void ResetCubeData()
-    {
-        Debug.Log($"GameboardCtrl ::: list.Count = {list.Count}");
-
-        for (int i = 0; i < list.Count; i++)
-        {
-            list[i].SetActive(true);
-        }
-    }
 }
