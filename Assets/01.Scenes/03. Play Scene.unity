@@ -795,6 +795,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &334623407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4557272357239706128, guid: 4cef7b9eab3050344a14caed6d7d53b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2057284399865112667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334623405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a06b680294afe4f8bb68e9bcf590cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &334623408 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4321295215225254607, guid: 4cef7b9eab3050344a14caed6d7d53b2,
@@ -3461,7 +3473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9acd06c099623c48b878dbdc9675f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userName: 
+  username: 
   profileImageNum: 0
   profileImages:
   - {fileID: 21300000, guid: 5758341aa7088fa4da2832d52f813a6e, type: 3}
@@ -4249,6 +4261,7 @@ MonoBehaviour:
   pointerCtrl: {fileID: 601603641}
   answerManager: {fileID: 564380692}
   gameboardCtrl: {fileID: 0}
+  aloneModeQuestCtrl: {fileID: 0}
   gamePanelCtrl: {fileID: 735680091}
   gamePanel_Create: {fileID: 8186445132670978719, guid: b2022e926ea9e8d4abade0281d7cc815,
     type: 3}
@@ -4257,6 +4270,7 @@ MonoBehaviour:
   settingCtrl: {fileID: 2085763692}
   screenshotCtrl: {fileID: 1044556737}
   cubeCtrl: {fileID: 601603642}
+  testInformation: {fileID: 334623407}
   cardboard: {fileID: 0}
   inputField: {fileID: 0}
   oxPanel: {fileID: 0}

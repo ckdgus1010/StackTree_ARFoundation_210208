@@ -30,6 +30,9 @@ public class ButtonManager03 : MonoBehaviour
     [Header("Cube Info")]
     public CubeCtrl cubeCtrl;
 
+    [Header("출시 전 지울 것")]
+    public TestInformation testInformation;
+
     [HideInInspector]
     public GameObject cardboard;
     [HideInInspector]
@@ -190,6 +193,8 @@ public class ButtonManager03 : MonoBehaviour
         answerManager.ClickNextLevelButton(playSceneCanvas);
 
         cubeCtrl.ResetCubeData();
+
+        testInformation.ShowStageInfo();
         Debug.Log("ButtonManager03 ::: 다음 단계로 버튼 클릭");
     }
 

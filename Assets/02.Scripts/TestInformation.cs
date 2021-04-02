@@ -8,7 +8,7 @@ public class TestInformation : MonoBehaviour
 {
     public Text text; 
 
-    void Start()
+    public void ShowStageInfo()
     {
         ModeType playModeType = GameManager.Instance.modeType;
         int stageID = GameManager.Instance.stageID;
