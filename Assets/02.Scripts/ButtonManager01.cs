@@ -32,6 +32,7 @@ public class ButtonManager01 : MonoBehaviour
     public AchievementData achievementData;
     public GameObject profileHelpPanel;
     public GameObject profileImagemodificationPanel;
+    public ProfileImageScrollCtrl profileImageModificationCtrl;
 
     [Header("Setting Panel")]
     public GameObject settingPanel;
@@ -208,6 +209,19 @@ public class ButtonManager01 : MonoBehaviour
     public void ClickProfileImageModificationButton()
     {
         profileImagemodificationPanel.SetActive(!profileImagemodificationPanel.activeSelf);
+    }
+
+    // 프로필 팝업 - 프로필 사진 수정 팝업 - [확인 버튼] 클릭 시
+    public void ClickModificationConfirmButton()
+    {
+        // profileImageNum 변경
+        GameManager.Instance.profileImageNum = profileImageModificationCtrl.currPointNum;
+        profileImage.sprite = GameManager.Instance.profileImages[GameManager.Instance.profileImageNum];
+
+        // 정보 저장
+        SaveManager.Save();
+
+        ClickProfileImageModificationButton();
     }
 
     // 프로필 팝업 - [도움말 버튼] 클릭 시
