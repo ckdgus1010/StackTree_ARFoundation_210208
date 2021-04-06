@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum ModeType
 {
-    None, Create, Alone_Count, Alone_Minus, Alone_Plus, Together_Two, Together_Three
+    None, Create, Alone_Count, Alone_Minus, Alone_Plus, Together, Together_Two, Together_Three
 }
 
 public enum AloneModeStageState

@@ -20487,6 +20487,7 @@ MonoBehaviour:
   canvasManager: {fileID: 1643350416}
   loginPanelCtrl: {fileID: 541786411}
   signupPanelCtrl: {fileID: 261295505}
+  signupProfileImageCtrl: {fileID: 835347444}
   mainMenuCtrl: {fileID: 391974833}
   stageSelectPanel: {fileID: 1720823932}
   createModeHelpPopup: {fileID: 1717731202}

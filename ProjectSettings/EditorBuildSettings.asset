@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/03. Play Scene.unity
     guid: bcc00a7339931de45a54e051531a9f0a
+  - enabled: 1
+    path: Assets/01.Scenes/04. Together Scene.unity
+    guid: ca15fdb46a45c094ebc2599c4135c4fd
   m_configObjects: {}
