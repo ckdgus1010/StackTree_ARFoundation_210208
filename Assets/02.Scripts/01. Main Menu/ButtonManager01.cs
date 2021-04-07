@@ -12,6 +12,7 @@ public class ButtonManager01 : MonoBehaviour
     public PanelCtrl loginPanelCtrl;
     public PanelCtrl signupPanelCtrl;
     public ProfileImageScrollCtrl signupProfileImageCtrl;
+    public PlayFabManager playFabManager;
 
     [Header("Main Menu Scroll")]
     public MainMenuCtrl mainMenuCtrl;
@@ -55,7 +56,7 @@ public class ButtonManager01 : MonoBehaviour
 
         if (loginPanelCtrl.isButtonClicked == true)
         {
-            loginPanelCtrl.ResetInputFields();
+            playFabManager.ResetLoginInputField();
         }
 
         loginPanelCtrl.isButtonClicked = !loginPanelCtrl.isButtonClicked;
@@ -77,6 +78,8 @@ public class ButtonManager01 : MonoBehaviour
 
         // 버튼 소리
         SoundManager.Instance.ClickButton();
+
+        playFabManager.ClickPlayfabLoginButton();
     }
 
 
@@ -90,11 +93,12 @@ public class ButtonManager01 : MonoBehaviour
 
         if (signupPanelCtrl.isButtonClicked == true)
         {
-            signupPanelCtrl.ResetInputFields();
+            playFabManager.ResetSignupInpuField();
             signupProfileImageCtrl.currPointNum = 0;
         }
 
         signupPanelCtrl.isButtonClicked = !signupPanelCtrl.isButtonClicked;
+        playFabManager.ResetLoginInputField();
     }
 
     // 회원가입 팝업 >> [회원가입] 버튼 클릭 시
@@ -104,6 +108,14 @@ public class ButtonManager01 : MonoBehaviour
 
         // 버튼 소리
         SoundManager.Instance.ClickButton();
+
+        playFabManager.ClickSignUpButton();
+    }
+
+    // 로그인 에러 팝업 끄기
+    public void CloseErrorPopup()
+    {
+        playFabManager.CloseErrorPopup();
     }
 
     #endregion

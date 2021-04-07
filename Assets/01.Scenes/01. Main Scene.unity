@@ -1173,7 +1173,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -1185,7 +1185,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uC544\uC774\uB514 (3\uAE00\uC790 \uC774\uC0C1, \uC601\uC5B4\uB85C)"
+  m_Text: "\uC544\uC774\uB514(\uB2C9\uB124\uC784, 3~20\uC790, \uC601\uC5B4\uB85C)"
 --- !u!222 &126133658
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3ba1c54b89e58d40a2bedafdfe163a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0a71a5790ef39244997c8f66201fbd4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2624,7 +2624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 220738415}
   m_Layer: 5
-  m_Name: Register Error Panel
+  m_Name: Signup Error Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3215,10 +3215,6 @@ MonoBehaviour:
   destination: {x: 0, y: 0}
   isButtonClicked: 0
   lerpSpeed: 8
-  inputFields:
-  - {fileID: 1432182820}
-  - {fileID: 942423893}
-  - {fileID: 1156165176}
 --- !u!1 &268015244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,7 +3621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 200, y: -15}
   m_SizeDelta: {x: 1900, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &303501591
@@ -3648,7 +3644,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -7636,9 +7632,6 @@ MonoBehaviour:
   destination: {x: 0, y: 0}
   isButtonClicked: 0
   lerpSpeed: 7.5
-  inputFields:
-  - {fileID: 2046778406}
-  - {fileID: 1842175326}
 --- !u!1 &554862785
 GameObject:
   m_ObjectHideFlags: 0
@@ -7890,8 +7883,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1450566010}
+        m_MethodName: CloseErrorPopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8338,6 +8331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 572867133}
+  - component: {fileID: 572867134}
   m_Layer: 0
   m_Name: Login Manager
   m_TagString: Untagged
@@ -8359,6 +8353,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &572867134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572867132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fd3cb3abbf8d24d82d8f77788eabf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasManager: {fileID: 1643350416}
+  loginPanelCtrl: {fileID: 541786411}
+  signupPanelCtrl: {fileID: 261295505}
+  loginUsernameInput: {fileID: 2046778406}
+  loginPasswordInput: {fileID: 1842175326}
+  loginErrorPopup: {fileID: 817946341}
+  signupUsernameInput: {fileID: 1432182820}
+  signupPasswordInput: {fileID: 942423893}
+  signupEmailInput: {fileID: 1156165176}
+  signupErrorPopup: {fileID: 220738414}
 --- !u!1 &584752950
 GameObject:
   m_ObjectHideFlags: 0
@@ -10372,7 +10388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d0a71a5790ef39244997c8f66201fbd4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3ba1c54b89e58d40a2bedafdfe163a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11678,7 +11694,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -12043,7 +12059,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 870872851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1450566010}
+        m_MethodName: CloseErrorPopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &880159193
 GameObject:
   m_ObjectHideFlags: 0
@@ -13275,8 +13302,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 942423894}
   m_TextComponent: {fileID: 1869961599}
   m_Placeholder: {fileID: 1030740876}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -14564,7 +14591,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -15057,6 +15084,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1450566010}
+        m_MethodName: CloseErrorPopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: 
         m_Mode: 1
@@ -16313,7 +16351,7 @@ GameObject:
   - component: {fileID: 1156165177}
   - component: {fileID: 1156165176}
   m_Layer: 5
-  m_Name: Username InputField
+  m_Name: Email InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16384,13 +16422,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1156165177}
   m_TextComponent: {fileID: 2031355726}
   m_Placeholder: {fileID: 2040123470}
-  m_ContentType: 0
+  m_ContentType: 6
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -16477,7 +16515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 200, y: -35}
   m_SizeDelta: {x: 1900, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1157623377
@@ -16500,7 +16538,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -16879,7 +16917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 200, y: -5}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1176298288
@@ -16902,7 +16940,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -18957,12 +18995,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1450566010}
+        m_MethodName: CloseErrorPopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19241,7 +19279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1367333639
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20060,7 +20098,7 @@ GameObject:
   - component: {fileID: 1432182821}
   - component: {fileID: 1432182820}
   m_Layer: 5
-  m_Name: ID InputField
+  m_Name: Username InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20488,6 +20526,7 @@ MonoBehaviour:
   loginPanelCtrl: {fileID: 541786411}
   signupPanelCtrl: {fileID: 261295505}
   signupProfileImageCtrl: {fileID: 835347444}
+  playFabManager: {fileID: 572867134}
   mainMenuCtrl: {fileID: 391974833}
   stageSelectPanel: {fileID: 1720823932}
   createModeHelpPopup: {fileID: 1717731202}
@@ -22391,7 +22430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1643350416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25419,8 +25458,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1842175327}
   m_TextComponent: {fileID: 1157623377}
   m_Placeholder: {fileID: 1176298288}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -25897,7 +25936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 200, y: -20}
   m_SizeDelta: {x: 1900, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1869961599
@@ -25920,7 +25959,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -28219,7 +28258,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -28371,7 +28410,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -28383,7 +28422,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Email
+  m_Text: "\uC774\uBA54\uC77C"
 --- !u!222 &2040123471
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28608,7 +28647,7 @@ GameObject:
   - component: {fileID: 2046778407}
   - component: {fileID: 2046778406}
   m_Layer: 5
-  m_Name: ID InputField
+  m_Name: Username InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29631,7 +29670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 200, y: -5}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2133494521
@@ -29654,7 +29693,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 67ca8e97e02961a41ab2720a7580986d, type: 3}
+    m_Font: {fileID: 12800000, guid: 9294d0787fd73e840aa422a3866bcb1a, type: 3}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0

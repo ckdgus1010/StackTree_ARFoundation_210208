@@ -15,8 +15,6 @@ public class PanelCtrl : MonoBehaviour
     public bool isButtonClicked = false;
     public float lerpSpeed = 7.5f;
 
-    public InputField[] inputFields = new InputField[2];
-
     void Start()
     {
         rectTr = GetComponent<RectTransform>();
@@ -30,11 +28,9 @@ public class PanelCtrl : MonoBehaviour
         rectTr.anchoredPosition = Vector2.Lerp(rectTr.anchoredPosition, movingPoint, lerpSpeed * Time.deltaTime);
     }
 
-    public void ResetInputFields()
+    public void ResetPanelData()
     {
-        for (int i = 0; i < inputFields.Length; i++)
-        {
-            inputFields[i].text = "";
-        }
+        rectTr.anchoredPosition = startPos;
+        isButtonClicked = false;
     }
 }

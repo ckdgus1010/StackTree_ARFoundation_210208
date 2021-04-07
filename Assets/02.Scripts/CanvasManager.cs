@@ -49,7 +49,7 @@ public class CanvasManager : MonoBehaviour
     }
 
     // 로그인 화면 >> 메인 화면
-    public void SkipLogin()
+    public void ClickLoginButton()
     {
         canvasArray[(int)CanvasName.Main].SetActive(true);
         canvasArray[(int)CanvasName.Login].SetActive(false);
