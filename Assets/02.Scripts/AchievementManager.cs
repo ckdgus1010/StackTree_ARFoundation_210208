@@ -136,7 +136,7 @@ public class AchievementManager : MonoBehaviour
     // 클리어한 정보 저장하기
     void SaveAchievementData(int order)
     {
-        SaveManager.achievementInfo[order] = true;
+        //SaveManager.achievementInfo[order] = true;
         SaveManager.Save();
 
         Debug.Log($"AchievementManager ::: 업적 0{order + 1} 클리어 정보 저장");

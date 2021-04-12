@@ -13,6 +13,7 @@ public class ButtonManager01 : MonoBehaviour
     public PanelCtrl signupPanelCtrl;
     public ProfileImageScrollCtrl signupProfileImageCtrl;
     public PlayFabManager playFabManager;
+    public GoogleLoginManager googleManager;
 
     [Header("Main Menu Scroll")]
     public MainMenuCtrl mainMenuCtrl;
@@ -69,6 +70,7 @@ public class ButtonManager01 : MonoBehaviour
 
         // 버튼 소리
         SoundManager.Instance.ClickButton();
+        googleManager.ClickGoogleLoginButton();
     }
 
     // 로그인 팝업 >> [로그인] 버튼 클릭 시
@@ -115,7 +117,15 @@ public class ButtonManager01 : MonoBehaviour
     // 로그인 에러 팝업 끄기
     public void CloseErrorPopup()
     {
+        SoundManager.Instance.ClickButton();
         playFabManager.CloseErrorPopup();
+    }
+
+    // 구글 로그인 에러 팝업 끄기
+    public void CloseGoogleLoginErrorPopup()
+    {
+        SoundManager.Instance.ClickButton();
+        googleManager.CloseErrorPopup();
     }
 
     #endregion

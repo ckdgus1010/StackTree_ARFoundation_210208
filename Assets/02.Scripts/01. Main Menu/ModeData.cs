@@ -22,6 +22,10 @@ public class ModeData : MonoBehaviour
         {
             GameManager.Instance.currStageStateArray = GameManager.Instance.alone_03;
         }
+        else if (modeType == ModeType.Create)
+        {
+            Debug.Log($"ModeData ::: modeType = {modeType}");
+        }
         else
         {
             Debug.LogError($"ModeData ::: modeType = {modeType}");
