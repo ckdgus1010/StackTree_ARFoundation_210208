@@ -6,7 +6,9 @@ using UnityEngine.Video;
 public class VideoPlayerController : MonoBehaviour
 {
     private VideoPlayer videoPlayer;
+
     public CanvasManager canvasManager;
+    public PermissionManager permissionManager;
     public float timer = 1.5f;
 
     // 영상이 끝났는지 확인
@@ -32,5 +34,6 @@ public class VideoPlayerController : MonoBehaviour
     void FinishIntroVideo()
     {
         canvasManager.FinishIntroVideo();
+        permissionManager.CheckPermission();
     }
 }

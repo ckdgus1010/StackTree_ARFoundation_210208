@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class ButtonManager01 : MonoBehaviour
 {
     public CanvasManager canvasManager;
+    public PermissionManager permissionManager;
+
+    [Header("Permission")]
+    public GameObject permissionPanel;
 
     [Header("Login Canvas")]
     public PanelCtrl loginPanelCtrl;
@@ -46,6 +50,14 @@ public class ButtonManager01 : MonoBehaviour
 
 
     #region Login Canvas
+
+    // 접근 권한 묻기
+    public void ClickPermissionConfirmButton()
+    {
+        SoundManager.Instance.ClickButton();
+
+        permissionManager.RequestPermission();
+    }
 
     // 로그인 화면 >> [로그인] 버튼 클릭 시
     public void ClickLoginButton()
