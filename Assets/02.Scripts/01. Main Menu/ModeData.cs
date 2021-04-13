@@ -10,25 +10,21 @@ public class ModeData : MonoBehaviour
     {
         GameManager.Instance.modeType = modeType;
 
-        if (modeType == ModeType.Alone_Count)
+        switch(modeType)
         {
-            GameManager.Instance.currStageStateArray = GameManager.Instance.alone_01;
-        }
-        else if (modeType == ModeType.Alone_Minus)
-        {
-            GameManager.Instance.currStageStateArray = GameManager.Instance.alone_02;
-        }
-        else if (modeType == ModeType.Alone_Plus)
-        {
-            GameManager.Instance.currStageStateArray = GameManager.Instance.alone_03;
-        }
-        else if (modeType == ModeType.Create)
-        {
-            Debug.Log($"ModeData ::: modeType = {modeType}");
-        }
-        else
-        {
-            Debug.LogError($"ModeData ::: modeType = {modeType}");
+            case ModeType.Create:
+            case ModeType.Together:
+                Debug.Log($"ModeType = {modeType}");
+                break;
+            case ModeType.Alone_Count:
+                GameManager.Instance.currStageStateArray = GameManager.Instance.alone_01;
+                break;
+            case ModeType.Alone_Minus:
+                GameManager.Instance.currStageStateArray = GameManager.Instance.alone_02;
+                break;
+            case ModeType.Alone_Plus:
+                GameManager.Instance.currStageStateArray = GameManager.Instance.alone_03;
+                break;
         }
     }
 }

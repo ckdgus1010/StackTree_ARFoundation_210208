@@ -48,6 +48,10 @@ public class ButtonManager01 : MonoBehaviour
     [Header("Credit Canvas")]
     public CreditVideoPlayer creditVideoPlayer;
 
+    [Header("업데이트 시 삭제")]
+    public GameObject tutorialPanel;
+    public GameObject togetherModePanel;
+
 
     #region Login Canvas
 
@@ -195,10 +199,13 @@ public class ButtonManager01 : MonoBehaviour
 
         SoundManager.Instance.ClickButton();
 
-        SceneManager.LoadScene("04. Together Scene");
+        //SceneManager.LoadScene("04. Together Scene");
+
+        mainMenuCtrl.ChangeSwipingState();
+        togetherModePanel.SetActive(!togetherModePanel.activeSelf);
     }
 
-    // [물음표] 버튼 클릭 시(Create Mode)
+    // [물음표 버튼] 클릭 시(Create Mode)
     public void ClickHelpCreateMode()
     {
         // 버튼 소리
@@ -207,7 +214,7 @@ public class ButtonManager01 : MonoBehaviour
         mainMenuCtrl.ClickHelpButton(ModeName.CreateMode);
     }
 
-    // [물음표] 버튼 클릭 시(혼자하기 모드)
+    // [물음표 버튼] 클릭 시(혼자하기 모드)
     public void ClickHelpAloneMode()
     {
         // 버튼 소리
@@ -216,7 +223,7 @@ public class ButtonManager01 : MonoBehaviour
         mainMenuCtrl.ClickHelpButton(ModeName.AloneMode);
     }
 
-    // [물음표] 버튼 클릭 시(같이하기 모드)
+    // [물음표 버튼] 클릭 시(같이하기 모드)
     public void ClickHelpTogetherMode()
     {
         // 버튼 소리
@@ -268,7 +275,7 @@ public class ButtonManager01 : MonoBehaviour
         profileHelpPanel.SetActive(!profileHelpPanel.activeSelf);
     }
 
-    // 메인 메뉴 - [설정] 버튼 클릭 시
+    // 메인 메뉴 - [설정 버튼] 클릭 시
     public void ClickSettingButton()
     {
         //Debug.Log($"ButtonManager ::: ClickOptionButton()");
@@ -280,7 +287,7 @@ public class ButtonManager01 : MonoBehaviour
         settingPanel.SetActive(!settingPanel.activeSelf);
     }
 
-    // 설정 >> [만든이] 버튼 클릭 시
+    // 설정 >> [만든이 버튼] 클릭 시
     public void ClickCreditButton()
     {
         SoundManager.Instance.ClickButton();
@@ -288,6 +295,13 @@ public class ButtonManager01 : MonoBehaviour
         settingPanel.SetActive(false);
         AchievementManager.Instance.UpdateAchievementData(AchievementState.CreditRun_Count);
         canvasManager.ClickCreditButton();
+    }
+
+    // 설정 >> [튜토리얼 버튼] 클릭 시
+    public void ClickTutorialButton()
+    {
+        SoundManager.Instance.ClickButton();
+        tutorialPanel.SetActive(!tutorialPanel.activeSelf);
     }
 
     #endregion
