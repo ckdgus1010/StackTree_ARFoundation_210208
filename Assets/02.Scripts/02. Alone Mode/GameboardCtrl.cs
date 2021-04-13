@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameboardCtrl : MonoBehaviour
 {
     public GameObject[] gridGroup;
-    public GameObject cubePrefab;
 
     private GameObject cubeList;
     private GameObject currGrid;
