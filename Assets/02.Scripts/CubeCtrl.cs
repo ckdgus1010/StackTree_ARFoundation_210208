@@ -28,7 +28,8 @@ public class CubeCtrl : MonoBehaviour
                                     , guideCube.transform.position
                                     , gameboard.transform.rotation
                                     , cubeList.transform);
-        obj.transform.localScale = gameboardCtrl.GetCubeScale();
+        //obj.transform.localScale = gameboardCtrl.GetCubeScale();
+        obj.transform.localScale = guideCube.transform.localScale;
 
         list.Add(obj);
     }

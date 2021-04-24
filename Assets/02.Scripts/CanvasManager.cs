@@ -22,13 +22,14 @@ public class CanvasManager : MonoBehaviour
                 canvasArray[(int)CanvasName.Intro].SetActive(true);
                 break;
             case ModeType.Create:
-                canvasArray[(int)CanvasName.Main].SetActive(true);
-                break;
+                //canvasArray[(int)CanvasName.Main].SetActive(true);
+                //break;
             case ModeType.Alone_Count:
             case ModeType.Alone_Minus:
             case ModeType.Alone_Plus:
-                canvasArray[(int)CanvasName.Main].SetActive(true);
-                break;
+                //canvasArray[(int)CanvasName.Main].SetActive(true);
+                //break;
+            case ModeType.Together:
             case ModeType.Together_Two:
             case ModeType.Together_Three:
                 canvasArray[(int)CanvasName.Main].SetActive(true);

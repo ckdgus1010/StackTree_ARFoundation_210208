@@ -102,7 +102,8 @@ public class AloneModeQuestCtrl : MonoBehaviour
                                                         , obj.transform.GetChild(j).transform.position
                                                         , gameboard.transform.rotation
                                                         , cubeList.transform);
-                        cube.transform.localScale = gameboard.GetComponent<GameboardCtrl>().GetCubeScale();
+                        //cube.transform.localScale = gameboard.GetComponent<GameboardCtrl>().GetCubeScale();
+                        cube.transform.localScale = obj.transform.localScale;
 
                         list.Add(cube);
                     }

@@ -124,6 +124,7 @@ public class PointerCtrl : MonoBehaviour
         guideCube.SetActive(true);
         guideCube.transform.position = _tr.position;
         guideCube.transform.rotation = gameboard.transform.rotation;
+        guideCube.transform.localScale = _tr.parent.localScale;
 
         cubeCtrl.cubeTr = _tr;
     }
