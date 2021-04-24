@@ -25,6 +25,8 @@ public class GoogleLoginManager : MonoBehaviour
             if (success == true)
             {
                 Debug.Log("구글 로그인 성공");
+                GameManager.Instance.username = Social.localUser.userName;
+                SaveManager.Save();
                 canvasManager.ClickLoginButton();
             }
             else

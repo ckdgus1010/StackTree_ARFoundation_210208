@@ -22,6 +22,8 @@ public class PlayFabManager : MonoBehaviour
     public InputField signupEmailInput;
     public GameObject signupErrorPopup;
 
+    private string username;
+
     void Start()
     {
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
@@ -37,6 +39,8 @@ public class PlayFabManager : MonoBehaviour
     // [로그인 버튼] 클릭 시
     public void ClickPlayfabLoginButton()
     {
+        username = loginUsernameInput.text;
+
         var request = new LoginWithPlayFabRequest { Username = loginUsernameInput.text, Password = loginPasswordInput.text };
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnLoginFailure);
     }
@@ -49,6 +53,8 @@ public class PlayFabManager : MonoBehaviour
         ResetLoginInputField();
 
         canvasManager.ClickLoginButton();
+        GameManager.Instance.username = username;
+        SaveManager.Save();
         Debug.Log("PlayfabManager ::: 로그인 성공");
     }
 
@@ -56,6 +62,7 @@ public class PlayFabManager : MonoBehaviour
     private void OnLoginFailure(PlayFabError error)
     {
         loginErrorPopup.SetActive(true);
+        username = null;
         Debug.Log($"PlayFabManager ::: 로그인 실패 {error}");
     }
 
