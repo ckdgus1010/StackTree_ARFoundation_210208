@@ -170,7 +170,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.hard.stacktree_arfoundation_210208
   buildNumber: {}
-  AndroidBundleVersionCode: 3
+  AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

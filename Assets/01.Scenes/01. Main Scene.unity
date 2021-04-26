@@ -18177,8 +18177,8 @@ MonoBehaviour:
   effectSoundPlayer: {fileID: 1407346482}
   BGM: {fileID: 8300000, guid: 836e6f1c7b205fc4080ed43ab52d33ab, type: 3}
   creditMusic: {fileID: 8300000, guid: 16463ffec2ffd7a42a79cd3e66b57562, type: 3}
-  buttonSound: {fileID: 8300000, guid: 5d6f949e125b8ca4cad66fd01c30c7bf, type: 3}
-  screenshotSound: {fileID: 8300000, guid: 59f7e7a49dc1bb24c9c403d595844b30, type: 3}
+  buttonSound: {fileID: 8300000, guid: 95dacdead038e514bbc845321c9262a0, type: 3}
+  screenshotSound: {fileID: 8300000, guid: a71da9741d746b24faaa90fe88a3520b, type: 3}
   BGMVolume: 0.5
   effectVolume: 0.5
   muteBGM: 0
